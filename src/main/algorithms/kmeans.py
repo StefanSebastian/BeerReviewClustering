@@ -1,23 +1,18 @@
-from random import randint
 import datetime # logging
+from random import randint
 
-
-def manhattan_distance(x, y):
-    dist = 0
-    for i in range(len(x)):
-        dist += abs(x[i] - y[i])
-    return dist
+from src.main.algorithms.utils import manhattan_distance
 
 
 class KMeans:
-    def __init__(self, data, k, data_size, feature_size, distance_function=manhattan_distance):
+    def __init__(self, data, k, distance_function=manhattan_distance):
         self.data = data
-        self.data_size = data_size
-        self.feature_size = feature_size
+        self.data_size = len(data)
+        self.feature_size = len(data[0])
         self.k = k
         self.means = []
         self.distance_function = distance_function
-        self.labels = [-1] * data_size
+        self.labels = [-1] * self.data_size
         self.assignment_change = True
 
     def select_random_means(self):
@@ -46,7 +41,7 @@ class KMeans:
         return nearest_mean_idx
 
     def update_means(self):
-        sums_per_cluster = [[0 for _ in range(self.data.shape[1])] for _ in range(self.k)]
+        sums_per_cluster = [[0 for _ in range(self.feature_size)] for _ in range(self.k)]
         elements_per_cluster = [0] * self.k
 
         for element_idx in range(self.data_size):

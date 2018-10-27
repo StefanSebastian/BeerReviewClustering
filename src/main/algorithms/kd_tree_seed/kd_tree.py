@@ -1,6 +1,6 @@
 from operator import itemgetter
 
-from algorithms.kd_tree_seed.utils import get_bounding_points
+from src.main.algorithms.kd_tree_seed.utils import get_bounding_points
 
 
 class Node:

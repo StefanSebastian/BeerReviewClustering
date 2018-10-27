@@ -1,5 +1,7 @@
 import pickle
 
+import math
+
 
 def serialize(obj, filename):
     with open(filename, 'wb') as output_file:
@@ -11,8 +13,15 @@ def deserialize(filename):
         return pickle.load(input_file)
 
 
-class Data:
-    def __init__(self, points, nr_points, nr_features):
-        self.points = points
-        self.nr_points = nr_points
-        self.nr_features = nr_features
+def manhattan_distance(x, y):
+    dist = 0
+    for i in range(len(x)):
+        dist += abs(x[i] - y[i])
+    return dist
+
+
+def euclidean_distance(x, y):
+    dist = 0
+    for i in range(len(x)):
+        dist += (x[i] - y[i]) ** 2
+    return math.sqrt(dist)
