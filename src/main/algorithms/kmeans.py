@@ -5,17 +5,18 @@ from src.main.algorithms.utils import manhattan_distance
 
 
 class KMeans:
-    def __init__(self, data, k, distance_function=manhattan_distance):
+    def __init__(self, data, k, distance_function=manhattan_distance, means=None):
         self.data = data
         self.data_size = len(data)
         self.feature_size = len(data[0])
         self.k = k
-        self.means = []
+        self.means = means
         self.distance_function = distance_function
         self.labels = [-1] * self.data_size
         self.assignment_change = True
 
     def select_random_means(self):
+        self.means = []
         chosen = []
         while len(chosen) != self.k:
             random_idx = randint(0, self.data_size - 1)
@@ -60,7 +61,10 @@ class KMeans:
 
     def fit(self):
         print('Started at : ', datetime.datetime.now())
-        self.select_random_means()
+
+        if self.means is None:
+            print("No seed provided. Selecting random neans")
+            self.select_random_means()
 
         while self.assignment_change:
             self.assignment_change = False

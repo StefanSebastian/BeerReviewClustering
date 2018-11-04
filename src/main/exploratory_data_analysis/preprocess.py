@@ -1,6 +1,8 @@
 import pandas as pd
 
-beerdf = pd.read_csv('../data/beeradvocate_000.csv')
+from src.main.config import data_path, processed_path
+
+beerdf = pd.read_csv(data_path + '\\beeradvocate_000.csv')
 beerdf = beerdf.drop_duplicates('review_text')
 beerdf = beerdf.dropna(subset=['review_text'])
 beerdf = beerdf.dropna(subset=['beer_style'])
@@ -32,10 +34,14 @@ style_map = {
 }
 beerdf['beer_style'] = beerdf['beer_style'].map(style_map)
 keep = ['beer_style', 'review_text']
-beerdf[keep].to_csv('../data/preprocessed.csv')
+beerdf[keep].to_csv(processed_path + '\\preprocessed.csv')
 
 # sample 2000 records from each style of beer
-beerdf = beerdf.groupby('beer_style').apply(lambda x: x.sample(2000)).reset_index(drop=True)
-beerdf[keep].to_csv('../data/small.csv')
+test_beerdf = beerdf.groupby('beer_style').apply(lambda x: x.sample(2000)).reset_index(drop=True)
+test_beerdf[keep].to_csv(processed_path + '\\small.csv')
+
+# sample 5000 records ; min if we want to have equal nr of records from each type
+train_beerdf = beerdf.groupby('beer_style').apply(lambda x: x.sample(5000)).reset_index(drop=True)
+train_beerdf[keep].to_csv(processed_path + '\\train.csv')
 
 

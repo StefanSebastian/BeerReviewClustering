@@ -25,6 +25,8 @@ class LeafBucket:
         self.calculate_volume()
         self.calculate_density()
         self.calculate_mean()
+        print("Volume : ", self.volume)
+        print("Density : ", self.density)
 
     def calculate_volume(self):
         min_pt, max_pt = get_bounding_points(self.points)

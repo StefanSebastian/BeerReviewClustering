@@ -25,3 +25,10 @@ def euclidean_distance(x, y):
     for i in range(len(x)):
         dist += (x[i] - y[i]) ** 2
     return math.sqrt(dist)
+
+
+def convert_sparse_matrix_to_lists(matrix):
+    temp_list = []
+    for i in matrix:
+        temp_list.append(list(i.A[0]))
+    return temp_list
