@@ -1,0 +1,104 @@
+American IPA                           43369	Pale Ale
+American Double / Imperial IPA         26106	Pale Ale
+American Double / Imperial Stout       23354	Stout
+American Pale Ale (APA)                20520	Pale Ale
+American Amber / Red Ale               18731	Amber
+Russian Imperial Stout                 17192	Stout
+American Porter                        16601	Porter
+Belgian Strong Dark Ale                15407	Belgian Ale
+Fruit / Vegetable Beer                 15148	Fruit / Vegetable Beer
+Witbier                                13535	Wheat Beer
+Tripel                                 11637	Belgian Ale
+American Barleywine                    10108	Barleywine
+American Adjunct Lager                  9613	Pale Lager
+Belgian Strong Pale Ale                 8796	Belgian Ale
+Hefeweizen                              8553	Wheat Beer
+English Pale Ale                        7953	Pale Ale
+American Stout                          7868	Stout
+Saison / Farmhouse Ale                  7835	Pale Ale
+American Pale Wheat Ale                 7771	Wheat Beer
+American Strong Ale                     7458	Pale Ale
+Dubbel                                  7270	Belgian Ale
+Märzen / Oktoberfest                    7012	Amber
+American Brown Ale                      6942	Brown Ale
+Belgian Pale Ale                        6897	Belgian Ale
+Oatmeal Stout                           6723  	Stout
+English Brown Ale                       6614	Brown Ale
+Scotch Ale / Wee Heavy                  6558	Scotch Ale
+Maibock / Helles Bock                   6080	Bock
+Euro Pale Lager                         6028	Pale Lager
+Winter Warmer                           5995	Winter Warmer
+Czech Pilsener                          5845	Pale Lager
+Doppelbock                              5362	Bock
+Rye Beer                                5179	Rye Beer
+Bock                                    5159	Bock
+German Pilsener                         5087	Pale Lager
+Pumpkin Ale                             5037	Pumpkin Ale
+Quadrupel (Quad)                        4934	Belgian Ale
+Extra Special / Strong Bitter (ESB)     4819	Pale Ale
+Old Ale                                 4818	
+Vienna Lager                            4609
+Light Lager                             4472
+American Blonde Ale                     4252
+English India Pale Ale (IPA)            4165
+Baltic Porter                           4111
+Belgian IPA                             4045
+English Barleywine                      3842
+Lambic - Fruit                          3768
+Altbier                                 3708
+American Wild Ale                       3695
+Schwarzbier                             3423
+English Porter                          3419
+Herbed / Spiced Beer                    3382
+Belgian Dark Ale                        3309
+Irish Red Ale                           3274
+American Black Ale                      3055
+American Amber / Red Lager              2935
+Flanders Red Ale                        2858
+Rauchbier                               2607
+Milk / Sweet Stout                      2580
+American Pale Lager                     2406
+Kölsch                                  2342
+American Double / Imperial Pilsner      2260
+Weizenbock                              2237
+Foreign / Export Stout                  2217
+English Bitter                          2002
+Irish Dry Stout                         1986
+Munich Helles Lager                     1942
+Scottish Ale                            1936
+Cream Ale                               1858
+Flanders Oud Bruin                      1856
+Dortmunder / Export Lager               1809
+Dunkelweizen                            1808
+Bière de Garde                          1765
+Gueuze                                  1575
+California Common / Steam Beer          1507
+American Malt Liquor                    1411
+Smoked Beer                             1323
+Euro Dark Lager                         1232
+Munich Dunkel Lager                     1183
+English Strong Ale                      1183
+Berliner Weissbier                       933
+Wheatwine                                891
+Keller Bier / Zwickel Bier               870
+Chile Beer                               802
+Euro Strong Lager                        728
+English Stout                            727
+Lambic - Unblended                       705
+English Dark Mild Ale                    608
+Japanese Rice Lager                      496
+Bière de Champagne / Bière Brut          433
+American Dark Wheat Ale                  286
+Black & Tan                              278
+English Pale Mild Ale                    222
+Low Alcohol Beer                         219
+Scottish Gruit / Ancient Herbed Ale      211
+Braggot                                  199
+Kristalweizen                            198
+Eisbock                                  195
+Roggenbier                               153
+Sahti                                    139
+Kvass                                    118
+Gose                                      90
+Happoshu                                  55
+Faro                                      53

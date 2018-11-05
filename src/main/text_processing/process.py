@@ -24,6 +24,7 @@ def do_vectorization(file):
     features = vectorizer.fit_transform(desc)
 
     serialize(features, features_path + "\\" + file + '.features')
+    serialize(vectorizer.get_feature_names(), features_path + "\\" + file + ".feature_names")
 
 do_vectorization('small.csv')
-do_vectorization('train.csv')
+#do_vectorization('train.csv')

@@ -66,7 +66,10 @@ class KMeans:
             print("No seed provided. Selecting random neans")
             self.select_random_means()
 
+        nr_iteration = 0
         while self.assignment_change:
+            nr_iteration += 1
+            print("Iteration : ", nr_iteration)
             self.assignment_change = False
             self.mean_assignment()
             self.update_means()
