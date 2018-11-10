@@ -102,7 +102,6 @@ def evaluate_classification(labels, beer_df):
     print('F1 score : ', (2 * mean_precision * mean_recall) / (mean_precision + mean_recall))
 
 
-
 do_analysis('small.csv.features.centers.kd',
             'small.csv.features.labels.kd',
             'small.csv.feature_names',

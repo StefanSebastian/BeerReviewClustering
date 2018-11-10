@@ -1,5 +1,4 @@
 import pandas as pd
-
 from src.main.config import data_path, processed_path
 
 beerdf = pd.read_csv(data_path + '\\beeradvocate_000.csv')
@@ -36,12 +35,16 @@ beerdf['beer_style'] = beerdf['beer_style'].map(style_map)
 keep = ['beer_style', 'review_text']
 beerdf[keep].to_csv(processed_path + '\\preprocessed.csv')
 
+df_beer_style = beerdf['beer_style'].value_counts()
+print("After mapping: ")
+print(df_beer_style)
+
 # sample 2000 records from each style of beer
 test_beerdf = beerdf.groupby('beer_style').apply(lambda x: x.sample(2000)).reset_index(drop=True)
 test_beerdf[keep].to_csv(processed_path + '\\small.csv')
 
-# sample 5000 records ; min if we want to have equal nr of records from each type
-train_beerdf = beerdf.groupby('beer_style').apply(lambda x: x.sample(5000)).reset_index(drop=True)
+# sample 9500 records ; min if we want to have equal nr of records from each type
+train_beerdf = beerdf.groupby('beer_style').apply(lambda x: x.sample(9500)).reset_index(drop=True)
 train_beerdf[keep].to_csv(processed_path + '\\train.csv')
 
 
