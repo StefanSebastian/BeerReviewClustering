@@ -16,4 +16,5 @@ def perform_clustering(feature_path):
     serialize(kmeans.means, clusters_path + '\\' + feature_path + '.centers.kd')
     serialize(kmeans.labels, clusters_path + '\\' + feature_path + '.labels.kd')
 
-perform_clustering('small.csv.features')
+#perform_clustering('small.csv.features')
+perform_clustering('train.csv.features')

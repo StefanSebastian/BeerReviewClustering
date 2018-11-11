@@ -1,0 +1,64 @@
+\documentclass[12pt]{article}
+
+\usepackage{url} % websites in bib
+\usepackage{hyperref}
+\usepackage[a4paper,left=1in,right=1in,top=1in,bottom=1in]{geometry} % margins
+\usepackage{paralist} % compact enumerates
+
+\begin{document}
+	\title{K-Means clustering variants and improvements}
+	\author{Stefan Sebastian, 242}
+	\maketitle
+	
+	\begin{abstract}
+		TODO make abstract
+	\end{abstract}
+
+	\newpage
+	\tableofcontents
+	\newpage
+	
+	\section{Introduction}
+	\subsection{Motivation}
+	In recent times there has been an explosive growth of data. This new, digital resource has become so important that a recent article from The Economist magazine has called it 'the new oil'\cite{TheMostValuableResource}. Some important sources of data, gathered by Bernard Marr\cite{HowMuchDataDoWeCreateEveryDay}, a business consultant in big data and AI technologies, are: Social Media (every minute 456000 tweets are sent on Twitter, 46740 photos are uploaded on Instagram, 4146600 YouTube videos are being watched), Communication (16 million text messages and 156 million emails are sent every minute), Services(45788 trips are made through Uber per minute), Internet of Things(8 million people use voice control every month). The amount of data in the world is predicted to reach 163 zettabytes by 2025\cite{WhatWillWeDoWhenTheWorldsDataHits163Zettabytes}, where one zettabyte represents a trillion gigabytes.
+	
+	The main reason for choosing the K-means method for this paper is because I believe that the development of a computationally efficient unsupervised learning method will be necessary to keep up with future's data, which will continue to grow and sometimes lack meaningful labels.
+	
+	\subsection{Clustering}
+	Clustering is a field of data analysis whose purpose is to organize points, or objects into natural clusters. In other words given N objects described by a set of features, find a number of groups, such that objects in the same cluster are similar to each other and different from objects in other clusters\cite{DataClustering50yearsBeyondKmeans}. Given that there is no rigorous definition of similarity and that clusters in real data can overlap there are multiple algorithms and difference measures proposed in research.
+	
+	\subsection{K-means}
+	The K-means algorithm was discovered independently in multiple scientific fields around the same time and its name comes from a paper published by MacQueen in 1967\cite{DataClustering50yearsBeyondKmeans}. Despite being so old, this method is still widely used in clustering tasks because of its efficiency, simplicity and proven success.
+	
+	The main goal of this algorithm is to minimize the distance between cluster centers and points assigned to them, which is a NP-hard problem. For this reason K-means is a greedy algorithm and has a chance to get stuck in local minimum instead of the best solution\cite{DataClustering50yearsBeyondKmeans}.
+	
+	A basic version of the K-means algorithm is\cite{AlgorithmsForClusteringData}:
+	\begin{compactenum}
+		\item Select an initial partition with K clusters and repeat 2 and 3 until the point membership no longer changes
+		\item Assign each point to the closest center
+		\item Update cluster centers based on the new assignment
+	\end{compactenum}
+	
+	\section{Improvements}
+	
+	\subsection{Execution time optimizations}
+	TODO parallel stuff
+	
+	\subsection{Seed selection}
+	TODO seed selection stuff
+	
+	\section{Variants}
+	\subsection{Bisecting K-means} 
+	bisecting kmeans
+	
+	\subsection{Evolutionary K-means }
+	genetic kmeans
+	
+	
+	\section{Conclusions}
+	TODO something conclusive
+	
+	\newpage
+	\bibliography{references_document}
+	\bibliographystyle{ieeetr}
+\end{document}

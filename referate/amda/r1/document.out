@@ -1,0 +1,11 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Motivation}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Clustering}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{K-means}{section.1}% 4
+\BOOKMARK [1][-]{section.2}{Improvements}{}% 5
+\BOOKMARK [2][-]{subsection.2.1}{Execution time optimizations}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.2}{Seed selection}{section.2}% 7
+\BOOKMARK [1][-]{section.3}{Variants}{}% 8
+\BOOKMARK [2][-]{subsection.3.1}{Bisecting K-means}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.2}{Evolutionary K-means }{section.3}% 10
+\BOOKMARK [1][-]{section.4}{Conclusions}{}% 11
