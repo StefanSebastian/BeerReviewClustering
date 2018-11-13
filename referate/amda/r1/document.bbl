@@ -27,4 +27,9 @@ R.~C.~D. Anil K.~Jain, {\em Algorithms for clustering data}, ch.~Clustering
   Methods and Algorithms, pp.~96--97.
 \newblock Prentice-Hall, Inc. Upper Saddle River, NJ, USA, 1988.
 
+\bibitem{EfficientEnhancedKmeans}
+A.~Fahim, A.-B. M.Salem, F.~A.~Torkey, and M.~Ramadan, ``Efficient enhanced
+  k-means clustering algorithm,'' {\em Journal of Zhejiang University}, vol.~7,
+  no.~10, pp.~1626--1633, 2006.
+
 \end{thebibliography}
