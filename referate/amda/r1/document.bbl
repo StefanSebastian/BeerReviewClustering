@@ -32,4 +32,13 @@ A.~Fahim, A.-B. M.Salem, F.~A.~Torkey, and M.~Ramadan, ``Efficient enhanced
   k-means clustering algorithm,'' {\em Journal of Zhejiang University}, vol.~7,
   no.~10, pp.~1626--1633, 2006.
 
+\bibitem{MapReduce}
+J.~Dean and S.~Ghemawat, ``Mapreduce: Simplified data processing on large
+  clusters,'' {\em Communications of the ACM}, vol.~51, pp.~137--150, 2004.
+
+\bibitem{ParallelKmeansClusteringBasedOnMapReduce}
+W.~Zhao, H.~Ma, and Q.~He, ``Parallel k-means clustering based on mapreduce,''
+  in {\em Cloud Computing} (M.~G. Jaatun, G.~Zhao, and C.~Rong, eds.), (Berlin,
+  Heidelberg), pp.~674--679, Springer Berlin Heidelberg, 2009.
+
 \end{thebibliography}
