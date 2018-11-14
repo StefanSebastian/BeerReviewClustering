@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{TheMostValuableResource}
 ``The most valuable resource.''
@@ -40,5 +40,18 @@ J.~Dean and S.~Ghemawat, ``Mapreduce: Simplified data processing on large
 W.~Zhao, H.~Ma, and Q.~He, ``Parallel k-means clustering based on mapreduce,''
   in {\em Cloud Computing} (M.~G. Jaatun, G.~Zhao, and C.~Rong, eds.), (Berlin,
   Heidelberg), pp.~674--679, Springer Berlin Heidelberg, 2009.
+
+\bibitem{GPUDef}
+K.~Krewell, ``What’s the difference between a cpu and a gpu?.''
+  \url{https://blogs.nvidia.com/blog/2009/12/16/whats-the-difference-between-a-cpu-and-a-gpu/},
+  2009.
+\newblock Accessed: 2018-11-14.
+
+\bibitem{GPUKmeans}
+Y.~Li, K.~Zhao, X.~Chu, and J.~Liu, ``Speeding up k-means algorithm by gpus,''
+  {\em Journal of Computer and System Sciences}, vol.~79, no.~2, pp.~216 --
+  229, 2013.
+\newblock 10th IEEE International Conference on Computer and Information
+  Technology, 2010.
 
 \end{thebibliography}
