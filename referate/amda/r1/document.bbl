@@ -54,6 +54,11 @@ Y.~Li, K.~Zhao, X.~Chu, and J.~Liu, ``Speeding up k-means algorithm by gpus,''
 \newblock 10th IEEE International Conference on Computer and Information
   Technology, 2010.
 
+\bibitem{SortSeed}
+Y.~Madhu, S.~Rao~Pathakota, and S.~, ``Enhancing k-means clustering algorithm
+  with improved initial center,'' {\em International Journal of Computer
+  Science and Information Technologies}, vol.~1, pp.~121 -- 125, 01 2010.
+
 \bibitem{KdTree}
 J.~L. Bentley, ``Multidimensional binary search trees used for associative
   searching,'' {\em Commun. ACM}, vol.~18, pp.~509--517, Sept. 1975.
@@ -72,5 +77,10 @@ MYguel, ``Kdtree figure 2.''
 S.~J. Redmond and C.~Heneghan, ``A method for initialising the k-means
   clustering algorithm using kd-trees,'' {\em Pattern Recognition Letters},
   vol.~28, no.~8, pp.~965 -- 973, 2007.
+
+\bibitem{ROBIN}
+M.~A. Hasan, V.~Chaoji, S.~Salem, and M.~J. Zaki, ``Robust partitional
+  clustering by outlier and density insensitive seeding,'' {\em Pattern Recogn.
+  Lett.}, vol.~30, pp.~994--1002, Aug. 2009.
 
 \end{thebibliography}

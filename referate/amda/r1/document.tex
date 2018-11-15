@@ -44,6 +44,7 @@
 	\end{compactenum}
 	
 	\section{Improvements}
+	This section presents some recent research results from two of the most researched aspects of K-means, computation time optimization and initial seed selection. The first is done with the aim of scaling the algorithm to huge datasets while the other has the goal of fine tuning the accuracy of this algorithm.
 	
 	\subsection{Execution time optimizations}
 	As illustrated in the introductory section, data sets are growing larger and more varied. Consequently there is a need for algorithms that scale well and obtain good results without having huge computational costs. K-means is such an algorithm, since it is characterized by simplicity and has been proven to work empirically with a multitude of datasets\cite{DataClustering50yearsBeyondKmeans}. This success has driven researchers to scale the algorithm for use on larger datasets. Next, I will present some of these execution time optimizations for the algorithm.
@@ -72,10 +73,13 @@
 	The first strategy is tested on datasets with up to 4 million points, 400 clusters and 8 feature dimension, finishing the computation in just 2.2 seconds. An impressive result for the second strategy is processing 494.080 points, with a 100 clusters and 34 features in just over a second.
 	
 	\subsection{Seed selection}
-	The K-means algorithm converges to a local optima\cite{AlgorithmsForClusteringData}, meaning it can be strongly influenced by the seed selection process. If the initial seeds are near a local optima then the algorithm is unlikely to find the best cluster centers. For this reason, various strategies have been proposed for efficient seed initialization.
+	The K-means algorithm converges to a local optima\cite{AlgorithmsForClusteringData}, meaning it can be strongly influenced by the seed selection process. The most common approach is random sampling. However, if the initial seeds are near a local optima then the algorithm is unlikely to find the best cluster centers. For this reason, various strategies have been proposed for efficient seed initialization.
+	
+	\subsubsection{Sort and split}
+	A conceptually simple heuristic for choosing the K-means seeds was proposed by Yedla et al.\cite{SortSeed}. The main idea of the method is to sort all points in the initial dataset by distance from origin. In case that there are points with negative feature values then they are transformed, by subtracting the minimum attribute value out of the feature value for each point. After sorting, the data is partitioned in k equal sets, where k is the number of desired seeds. From each set, the middle point is chosen as a seed. This method was compared to the classic algorithm that uses the random seed initialization and has been shown to obtain better accuracy on all testing sets.
 	
 	\subsubsection{K-d trees}
-	A k-d tree, introduced by Jon L. Bentley\cite{KdTree}, meaning k-dimensional tree is a data structure used to organize points in k-dimensional space, which is useful for partitioning data and optimizing multidimensional queries. The algorithm for building such a tree is recursive: select a point in the current dataset, choose a dimension, create a node of the selected point with a left subtree made out of the points with a lower value on the chosen dimension and a right subtree with the others.
+	A k-d tree, introduced by Jon L. Bentley\cite{KdTree}, meaning k-dimensional tree is a data structure used to organize points in k-dimensional space, which is useful for partitioning data and optimizing multidimensional queries. The algorithm for building such a tree is recursive: select a point in the current dataset, choose a dimension, create a node of the selected point with a left subtree made out of the points with a lower value on the chosen dimension and a right subtree with the others. The space complexity for this structure is O(n) and all operations have an average time complexity of O(log n) and O(n) in the worst case. 
 	
 	\begin{figure}
 		\centering
@@ -100,6 +104,13 @@
 	The heuristic for choosing the seeds is to get points that have a large density and are separated by a reasonable distance. Thus, the first seed is equal to the mean of the bucket with the highest density. The other k-1 seeds are chosen to be the ones that maximize the value g, where g is the product between the density of the bucket mean and the minimum distance to other bucket means. An optimization to avoid outliers is to compute the seeds, remove 20\% of the least dense buckets, and then compute another pair of seeds.
 	
 	The algorithm was compared to another 3 initialization methods (Forgy, Bradley and Fayyad, Katsavounidis), on 36 datasets and obtained better Distortion values on over 30 compared to each of the other methods. Distortion is the sum of the distances between each point and its cluster center.
+	
+	\subsubsection{ROBIN}
+	ROBIN stands for Robust Initialization and is a method designed by Hasan et al.\cite{ROBIN}, with the main goal to avoid choosing outliers as seeds for the K-means algorithm. For this reason the measure of LOF(Local Outlier Factor) is used. To compute this for a point x, we first need the neighborhood \(N(x, mp)\) on the threshold mp(mininum points). This is a set of all the points closer or equally close to x than the mpth nearest neighbor. The \(density(x, mp)\) value is calculated as the fraction of the size of the neighborhood and the sum of distances between x and all points in N. The average relative density of x, \(ard(x, mp)\), is then computed as the ratio of \(density(x, mp)\) and the average density of its nearest neighbors. The LOF score is then calculated as the inverse of the ard value. 
+	
+	The algorithm stands from a reference point r, which can be any point in the dataset. It then sorts the points in decreasing order of distances from r and chooses the first point that has a LOF value around 1. In the following iterations, instead of r, the points are sorted in decreasing order of the minimum distances from the points that have been chosen as centers. The worst case computational complexity is \(O(n\cdot logn\cdot k\cdot d)\), due to the sorting method.
+	
+	The method was evaluated on a set of synthetic datasets, with d(the number of features) varying from 8 to 24 and k going from 10 to 50 and the number of data points generated for each of the clusters being a random value between 100 and 1000. For each of these datasets the ROBIN initialization method has performed better than the random selection method in terms of distortion, and has obtained results close to the optimal ones.
 	
 	\section{Variants}
 	\subsection{Bisecting K-means} 
