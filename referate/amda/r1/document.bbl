@@ -54,4 +54,23 @@ Y.~Li, K.~Zhao, X.~Chu, and J.~Liu, ``Speeding up k-means algorithm by gpus,''
 \newblock 10th IEEE International Conference on Computer and Information
   Technology, 2010.
 
+\bibitem{KdTree}
+J.~L. Bentley, ``Multidimensional binary search trees used for associative
+  searching,'' {\em Commun. ACM}, vol.~18, pp.~509--517, Sept. 1975.
+
+\bibitem{KdTreeFig1}
+KindDragon33, ``Kdtree figure 1.''
+  \url{https://en.wikipedia.org/wiki/File:Kdtree_2d.svg}, 2006.
+\newblock Accessed: 2018-11-15.
+
+\bibitem{KdTreeFig2}
+MYguel, ``Kdtree figure 2.''
+  \url{https://en.wikipedia.org/wiki/File:Tree_0001.svg}, 2008.
+\newblock Accessed: 2018-11-15.
+
+\bibitem{KdTreeKmeans}
+S.~J. Redmond and C.~Heneghan, ``A method for initialising the k-means
+  clustering algorithm using kd-trees,'' {\em Pattern Recognition Letters},
+  vol.~28, no.~8, pp.~965 -- 973, 2007.
+
 \end{thebibliography}

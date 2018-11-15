@@ -5,6 +5,10 @@
 \usepackage[a4paper,left=1in,right=1in,top=1in,bottom=1in]{geometry} % margins
 \usepackage{paralist} % compact enumerates
 
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+
 \begin{document}
 	\title{K-Means clustering variants and improvements}
 	\author{Stefan Sebastian, 242}
@@ -68,7 +72,34 @@
 	The first strategy is tested on datasets with up to 4 million points, 400 clusters and 8 feature dimension, finishing the computation in just 2.2 seconds. An impressive result for the second strategy is processing 494.080 points, with a 100 clusters and 34 features in just over a second.
 	
 	\subsection{Seed selection}
-	TODO seed selection stuff
+	The K-means algorithm converges to a local optima\cite{AlgorithmsForClusteringData}, meaning it can be strongly influenced by the seed selection process. If the initial seeds are near a local optima then the algorithm is unlikely to find the best cluster centers. For this reason, various strategies have been proposed for efficient seed initialization.
+	
+	\subsubsection{K-d trees}
+	A k-d tree, introduced by Jon L. Bentley\cite{KdTree}, meaning k-dimensional tree is a data structure used to organize points in k-dimensional space, which is useful for partitioning data and optimizing multidimensional queries. The algorithm for building such a tree is recursive: select a point in the current dataset, choose a dimension, create a node of the selected point with a left subtree made out of the points with a lower value on the chosen dimension and a right subtree with the others.
+	
+	\begin{figure}
+		\centering
+		\begin{subfigure}{.5\textwidth}
+			\centering
+			\includegraphics[width=.9\linewidth]{Kdtree_2d.png}
+			\caption{An example of a 2d k-d tree\cite{KdTreeFig1}}
+		\end{subfigure}%
+		\begin{subfigure}{.5\textwidth}
+			\centering
+			\includegraphics[width=.9\linewidth]{Tree_0001.png}
+			\caption{The data structure\cite{KdTreeFig2}}
+		\end{subfigure}
+		\caption{K-d tree graphic representation}
+		\label{fig:kdtree}
+	\end{figure}
+	
+	An implementation of seed selection based on the k-d structure is proposed by Redmond and Heneghan\cite{KdTreeKmeans}. The reason for using this data structure is to gain information about the density of the dataset. In order to suit the problem some decisions have been made while building the tree. At each step the dataset is split among the longest dimension of the bounding box. This box can be computed by taking the minimal and maximal values for each feature in the dataset, and building two new points. The longest dimension is simply the feature for which there is the greatest difference between the two points calculated in the previous step. The chosen condition for stopping and making a leaf node is when the size of the considered dataset is \(\frac{n}{10K}\) or lower, which allows approximatively 10 leaf buckets for each cluster.
+	
+	After the k-d tree is built some density estimations are made using the obtained leaf buckets. For each bucket the value of the density is calculated as \( N / V \), where N is the number of points it contains and V is the volume of the bounding box. The volume is computed as the product of the differences between each feature of the two bounding points, or the geometric mean in case of two features being equal. 
+	
+	The heuristic for choosing the seeds is to get points that have a large density and are separated by a reasonable distance. Thus, the first seed is equal to the mean of the bucket with the highest density. The other k-1 seeds are chosen to be the ones that maximize the value g, where g is the product between the density of the bucket mean and the minimum distance to other bucket means. An optimization to avoid outliers is to compute the seeds, remove 20\% of the least dense buckets, and then compute another pair of seeds.
+	
+	The algorithm was compared to another 3 initialization methods (Forgy, Bradley and Fayyad, Katsavounidis), on 36 datasets and obtained better Distortion values on over 30 compared to each of the other methods. Distortion is the sum of the distances between each point and its cluster center.
 	
 	\section{Variants}
 	\subsection{Bisecting K-means} 
