@@ -155,6 +155,15 @@
 	
 	The KGA-clustering algorithm has been evaluated on several artificial and real life datasets with dimension going from 2 to 5, clusters from 2 to 6 and up to 262.144 data points. It has been observed that it obtained an optimal value more often than the simple K-means algorithm.
 	
+	\subsubsection{Improved Genetic K-means}
+	Another variant of genetic K-means has been proposed by Guo et al.\cite{ImprovedGeneticKmeans}. What is interesting in this approach is the fact that the number of clusters is not known in advance, but is part of the solution. Thus, a chromosome contains, k, the number of clusters, and all the chosen means.
+	
+	The main goal of IGKM is to find a small number of compact clusters with a large separation between them. In order to do this, it uses the following fitness function : \(fitness(k) = 1/k \cdot E_1/E_k \cdot D_k \). The first factor, k, is the number of clusters, and is used to penalize solutions with a lot of clusters. \(E_k\) is the sum of euclidean distances between points and their cluster centers, when we consider the first k clusters. The fitness function increases as the value of \(E_k\) decreases, meaning that it encourages the formation of compact clusters. \(D_k\) is used to measure the separation between clusters and is calculated as \(D_k=max_{i,j=1}^k \|z_i - z_j\|^2 \), where \(z_i\) and \(z_j\) are the centers for the clusters i and j. This encourages solutions that have at least 2 clusters with a high degree of separation.
+	
+	The other steps are similar to KGA\cite{EvolutionaryKMeans}, with the consideration that there needs to be a handling method for invalid chromosomes resulting out of crossover.
+	
+	IGKM was compared to the classic K-means method and to other genetic implementations over a set of small datasets (n <= 214) and has been shown to find the optimal number of clusters and the best partition in each of them.
+	
 	\section{Conclusions}
 	TODO something conclusive
 	

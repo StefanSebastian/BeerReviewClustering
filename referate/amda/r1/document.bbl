@@ -96,4 +96,9 @@ S.~Bandyopadhyay and U.~Maulik, ``An evolutionary technique based on k-means
   algorithm for optimal clustering in rn,'' {\em Information Sciences},
   vol.~146, no.~1, pp.~221 -- 237, 2002.
 
+\bibitem{ImprovedGeneticKmeans}
+H.~Guo, T.~Liu, S.~Gao, and K.~Zhu, ``An improved genetic k-means algorithm for
+  optimal clustering,'' in {\em Sixth IEEE International Conference on Data
+  Mining - Workshops (ICDMW'06)(ICDMW)}, vol.~00, pp.~793--797, 12 2006.
+
 \end{thebibliography}
