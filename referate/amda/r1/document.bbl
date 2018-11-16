@@ -83,4 +83,17 @@ M.~A. Hasan, V.~Chaoji, S.~Salem, and M.~J. Zaki, ``Robust partitional
   clustering by outlier and density insensitive seeding,'' {\em Pattern Recogn.
   Lett.}, vol.~30, pp.~994--1002, Aug. 2009.
 
+\bibitem{BisectingKmeans}
+M.~Steinbach, G.~Karypis, and V.~Kumar, ``A comparison of document clustering
+  techniques,'' in {\em In KDD Workshop on Text Mining}, 2000.
+
+\bibitem{ProgrammingCollectiveIntelligence}
+T.~Segaran, {\em Programming Collective Intelligence}, ch.~5.
+\newblock O'Reilly, first~ed., 2007.
+
+\bibitem{EvolutionaryKMeans}
+S.~Bandyopadhyay and U.~Maulik, ``An evolutionary technique based on k-means
+  algorithm for optimal clustering in rn,'' {\em Information Sciences},
+  vol.~146, no.~1, pp.~221 -- 237, 2002.
+
 \end{thebibliography}

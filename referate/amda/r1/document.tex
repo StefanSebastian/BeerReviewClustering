@@ -9,6 +9,8 @@
 \usepackage{caption}
 \usepackage{subcaption}
 
+\usepackage{amsmath}
+
 \begin{document}
 	\title{K-Means clustering variants and improvements}
 	\author{Stefan Sebastian, 242}
@@ -114,11 +116,44 @@
 	
 	\section{Variants}
 	\subsection{Bisecting K-means} 
-	bisecting kmeans
+	Bisecting K-means\cite{BisectingKmeans} is a variant of the K-means algorithm that can perform both flat and hierarchical clustering. The name of the algorithm is related to the fact that, at each iteration it splits a cluster in two. The algorithm, in its simplest form, looks like this:
+	\begin{compactenum}
+		\item Select a cluster to split
+		\item Split the cluster into two, and repeat this for a configured number of times, keeping the split which produces the best clustering
+		\item Repeat the previous steps until k clusters have been obtained
+	\end{compactenum}
 	
-	\subsection{Evolutionary K-means }
-	genetic kmeans
+	There are different strategies for choosing a cluster to split in the first step: the largest cluster, the one with the least similarity, a combination of these. Experimentally, it has been shown that the performance difference between them is minimal.
 	
+	The bisecting K-means has a few advantages over the basic algorithm. First of all, it is more efficient when k is large, because on the computation of each iteration, the distance to only two centroids are calculated. Secondly, the algorithm tends to produce more balanced clusters than the classic method in terms of cluster size. Thirdly, as shown in the original paper\cite{BisectingKmeans}, bisecting K-means generally obtains smaller entropy than the simple K-means method. 
+	
+	\subsection{Genetic Algorithms}
+	Genetic Algorithms\cite{ProgrammingCollectiveIntelligence} are an heuristic search method inspired by nature. They are efficient and adaptive and can provide a near optimal evaluation of a function(fitness). The main advantage over other search methods is the fact that GAs can avoid getting stuck in local optima by using some random operations. Next I will explain a simple genetic algorithm. First, an initial set of random solutions (or chromosomes), called the population, is generated. Then a fitness value is computed for each solution. A selection is made based on the fitness of each solution. Those with a better fitness are more likely to be chosen. Two kinds of operations are then performed on the selected candidates: mutation(a small, random change in a solution) and crossover(a combination of two solutions). After this, a new population has been generated, and the process is repeated for a configured number of times or until the fitness reaches a certain threshold. The main advantage of genetic algorithms is that they can be used for a varied number of problems, the only aspects being determined by the problem is the representation of a solution and the computation of the fitness function. K-means, having the vulnerability of being stuck in local optima is a good candidate for a genetic algorithm implementation.
+	
+	\subsubsection{KGA-clustering}
+	One such implementation, entitled KGA-clustering, is presented by Maulik and Bandyopadhyay\cite{EvolutionaryKMeans}. Firstly, they chose to encode the solution as a list of cluster centers. Each chromosome encodes a sequence of D * K float numbers where, D is the dimension of the data and K is the desired number of clusters. The clustering metric used is the distortion, meaning the sum of euclidean distances from each point to its cluster mean. Similarly to the basic K-means algorithm, the initial centers are points chosen at random from the dataset.
+	
+	For each chromosome, after decoding, the distances from each point and the new centers are calculated. The solution is then replaced by a new chromosome containing the updated means, and the fitness function is calculated. After going through all the population and if the termination criterion is not met, the genetic operators are applied. Selection is done following the survival of the fittest strategy, meaning that the chance of a chromosome to be selected is proportional to its fitness. The crossover operator used is single-point crossover with a fixed probability. A random point is selected and the portions of the chromosomes to the right of the point are exchanged. Mutation is also done with a fixed probability. A position is chosen inside a chromosome and is updated as in equation \ref{mutation}. In this equation, \(x^i\) is the selected feature of a point, \(x_\mathrm{min}^i, x_\mathrm{max}^i\) are the minimum and maximum values over that dimension and $\lambda$ is generated randomly in range \([-R,R]\). The function for R is given in figure \ref{mutationR}, and M represents the value of the chromosome's fitness.
+	
+	\begin{equation}
+		\label{mutation}
+		x^i = 
+		\begin{cases}
+			x^i + \lambda \cdot (x_\mathrm{max}^i - x^i) \quad if \quad \lambda >= 0 \\
+			x^i + \lambda \cdot (x^i - x_\mathrm{min}^i) \quad otherwise
+		\end{cases} 
+	\end{equation}
+	
+	\begin{equation}
+	\label{mutationR}
+		R =
+			\begin{cases}
+			\frac{M - M_\mathrm{min}}{M_\mathrm{max} - M_\mathrm{min}}, & \text{if}\ M_\mathrm{max} > M \\
+			1, & \text{if}\ M_\mathrm{min} = M_\mathrm{max}
+			\end{cases}
+	\end{equation}
+	
+	The KGA-clustering algorithm has been evaluated on several artificial and real life datasets with dimension going from 2 to 5, clusters from 2 to 6 and up to 262.144 data points. It has been observed that it obtained an optimal value more often than the simple K-means algorithm.
 	
 	\section{Conclusions}
 	TODO something conclusive

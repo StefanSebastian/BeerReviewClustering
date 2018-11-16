@@ -11,10 +11,10 @@ def perform_clustering(feature_path):
     # get seeds
     kdtreeseed = KdTreeSeed(features, 9)
     first, second = kdtreeseed.get_seeds()
-    kmeans = KMeans(features, 9, euclidean_distance, first)
+    kmeans = KMeans(features, 9, euclidean_distance)
     kmeans.fit()
-    serialize(kmeans.means, clusters_path + '\\' + feature_path + '.centers.kd')
-    serialize(kmeans.labels, clusters_path + '\\' + feature_path + '.labels.kd')
+    serialize(kmeans.means, clusters_path + '\\' + feature_path + '.centers')
+    serialize(kmeans.labels, clusters_path + '\\' + feature_path + '.labels')
 
 #perform_clustering('small.csv.features')
 perform_clustering('train.csv.features')
