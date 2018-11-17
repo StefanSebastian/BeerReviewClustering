@@ -1,7 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-df = pd.read_csv('../data/beeradvocate_000.csv')
+df = pd.read_csv('../../../data/beeradvocate_000.csv')
 print("Shape of the dataset : ", df.shape)
 
 
@@ -15,6 +15,8 @@ print("Number of values for each beer type : ")
 with pd.option_context('display.max_rows', None, 'display.max_columns', None):
     print(df_beer_style)
 
-df_beer_style.plot.bar()
+ax = df_beer_style.plot.bar()
+for tick in ax.yaxis.get_major_ticks():
+    tick.label.set_fontsize(20)
 plt.xticks([])
 plt.show()
