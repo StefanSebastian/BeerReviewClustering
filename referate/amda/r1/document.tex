@@ -14,10 +14,11 @@
 \begin{document}
 	\title{K-Means clustering variants and improvements}
 	\author{Stefan Sebastian, 242}
+	\date{}
 	\maketitle
 	
 	\begin{abstract}
-		TODO make abstract
+		Clustering is an efficient method of extracting information from unlabeled data. Although it came out more than 50 years ago, the K-means algorithm remains the most popular clustering method due to its simplicity, performance and proven results. This paper will make an introduction to this clustering approach and the necessity for it, and then will present some significant research results in the topic. Under the section 'Improvements', there are methods which focus on improving an aspect of K-means, like computational efficiency or initial seed selection, while the section 'Variants' contains different approaches for the whole algorithm, like genetic algorithms or bisecting K-means.
 	\end{abstract}
 
 	\newpage
@@ -28,7 +29,7 @@
 	\subsection{Motivation}
 	In recent times there has been an explosive growth of data. This new, digital resource has become so important that a recent article from The Economist magazine has called it 'the new oil'\cite{TheMostValuableResource}. Some important sources of data, gathered by Bernard Marr\cite{HowMuchDataDoWeCreateEveryDay}, a business consultant in big data and AI technologies, are: Social Media (every minute 456000 tweets are sent on Twitter, 46740 photos are uploaded on Instagram, 4146600 YouTube videos are being watched), Communication (16 million text messages and 156 million emails are sent every minute), Services(45788 trips are made through Uber per minute), Internet of Things(8 million people use voice control every month). The amount of data in the world is predicted to reach 163 zettabytes by 2025\cite{WhatWillWeDoWhenTheWorldsDataHits163Zettabytes}, where one zettabyte represents a trillion gigabytes.
 	
-	The main reason for choosing the K-means method for this paper is because I believe that the development of a computationally efficient unsupervised learning method will be necessary to keep up with future's data, which will continue to grow and sometimes lack meaningful labels.
+	The main reason for choosing the K-means method for this paper is because I believe that the development of a computationally efficient unsupervised learning method will be necessary to keep up with future's data, which will continue to grow and will sometimes lack meaningful labels.
 	
 	\subsection{Clustering}
 	Clustering is a field of data analysis whose purpose is to organize points, or objects into natural clusters. In other words given N objects described by a set of features, find a number of groups, such that objects in the same cluster are similar to each other and different from objects in other clusters\cite{DataClustering50yearsBeyondKmeans}. Given that there is no rigorous definition of similarity and that clusters in real data can overlap there are multiple algorithms and difference measures proposed in research.
@@ -44,6 +45,8 @@
 		\item Assign each point to the closest center
 		\item Update cluster centers based on the new assignment
 	\end{compactenum}
+
+	The most common seed selection method is to choose k random points, and then, to avoid scenarios in which this choice falls upon outliers or local optima, to repeat the K-means algorithm for a number of times. However, there are more efficient initialization methods, as I will present in section \ref{sec:seeds}.
 	
 	\section{Improvements}
 	This section presents some recent research results from two of the most researched aspects of K-means, computation time optimization and initial seed selection. The first is done with the aim of scaling the algorithm to huge datasets while the other has the goal of fine tuning the accuracy of this algorithm.
@@ -75,6 +78,7 @@
 	The first strategy is tested on datasets with up to 4 million points, 400 clusters and 8 feature dimension, finishing the computation in just 2.2 seconds. An impressive result for the second strategy is processing 494.080 points, with a 100 clusters and 34 features in just over a second.
 	
 	\subsection{Seed selection}
+	\label{sec:seeds}
 	The K-means algorithm converges to a local optima\cite{AlgorithmsForClusteringData}, meaning it can be strongly influenced by the seed selection process. The most common approach is random sampling. However, if the initial seeds are near a local optima then the algorithm is unlikely to find the best cluster centers. For this reason, various strategies have been proposed for efficient seed initialization.
 	
 	\subsubsection{Sort and split}
@@ -131,7 +135,7 @@
 	Genetic Algorithms\cite{ProgrammingCollectiveIntelligence} are an heuristic search method inspired by nature. They are efficient and adaptive and can provide a near optimal evaluation of a function(fitness). The main advantage over other search methods is the fact that GAs can avoid getting stuck in local optima by using some random operations. Next I will explain a simple genetic algorithm. First, an initial set of random solutions (or chromosomes), called the population, is generated. Then a fitness value is computed for each solution. A selection is made based on the fitness of each solution. Those with a better fitness are more likely to be chosen. Two kinds of operations are then performed on the selected candidates: mutation(a small, random change in a solution) and crossover(a combination of two solutions). After this, a new population has been generated, and the process is repeated for a configured number of times or until the fitness reaches a certain threshold. The main advantage of genetic algorithms is that they can be used for a varied number of problems, the only aspects being determined by the problem is the representation of a solution and the computation of the fitness function. K-means, having the vulnerability of being stuck in local optima is a good candidate for a genetic algorithm implementation.
 	
 	\subsubsection{KGA-clustering}
-	One such implementation, entitled KGA-clustering, is presented by Maulik and Bandyopadhyay\cite{EvolutionaryKMeans}. Firstly, they chose to encode the solution as a list of cluster centers. Each chromosome encodes a sequence of D * K float numbers where, D is the dimension of the data and K is the desired number of clusters. The clustering metric used is the distortion, meaning the sum of euclidean distances from each point to its cluster mean. Similarly to the basic K-means algorithm, the initial centers are points chosen at random from the dataset.
+	One such implementation, entitled KGA-clustering, is presented by Maulik et al.\cite{EvolutionaryKMeans}. Firstly, they chose to encode the solution as a list of cluster centers. Each chromosome encodes a sequence of D * K float numbers where, D is the dimension of the data and K is the desired number of clusters. The clustering metric used is the distortion, meaning the sum of euclidean distances from each point to its cluster mean. Similarly to the basic K-means algorithm, the initial centers are points chosen at random from the dataset.
 	
 	For each chromosome, after decoding, the distances from each point and the new centers are calculated. The solution is then replaced by a new chromosome containing the updated means, and the fitness function is calculated. After going through all the population and if the termination criterion is not met, the genetic operators are applied. Selection is done following the survival of the fittest strategy, meaning that the chance of a chromosome to be selected is proportional to its fitness. The crossover operator used is single-point crossover with a fixed probability. A random point is selected and the portions of the chromosomes to the right of the point are exchanged. Mutation is also done with a fixed probability. A position is chosen inside a chromosome and is updated as in equation \ref{mutation}. In this equation, \(x^i\) is the selected feature of a point, \(x_\mathrm{min}^i, x_\mathrm{max}^i\) are the minimum and maximum values over that dimension and $\lambda$ is generated randomly in range \([-R,R]\). The function for R is given in figure \ref{mutationR}, and M represents the value of the chromosome's fitness.
 	
@@ -165,7 +169,9 @@
 	IGKM was compared to the classic K-means method and to other genetic implementations over a set of small datasets (n <= 214) and has been shown to find the optimal number of clusters and the best partition in each of them.
 	
 	\section{Conclusions}
-	TODO something conclusive
+	The K-means clustering method is a strong tool for data analysis, however it can't handle current processing needs in its basic form. For this reason the paper made a review of relevant research results that improve various aspects of K-means like: seed initialization, computation time optimization, handling data with a large number of clusters. Armed with the knowledge of these various improvements on K-means, a data scientist can apply this tool on almost any dataset.
+	
+	The popularity of this algorithm remains high (around 30000 results on Google Scholar for each year since 2010\cite{GoogleScholarPlot}), meaning when can expect new and more powerful improvements in the future.
 	
 	\newpage
 	\bibliography{references_document}
