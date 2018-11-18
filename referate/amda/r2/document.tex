@@ -71,6 +71,8 @@
 		\end{tabular}
 	\end{center}
 
+	Two methods were tested for seed initialization: random points and kd-tree based. The run with kd-trees obtained a 0.47 F1 score while, random initialization got a 0.53 F1 score. This might be caused by finding good starting points through randomness or that the large number of features is not a good fit for the kd-tree data structure.
+
 	\section{Evaluation metrics}
 	The direction chosen for evaluation is how well the clusters found separate the initial dataset by beer types. In order to do this, each cluster is labeled with the most common style of beer among its elements. This turns our problem intro a multi-label classification one.
 	
