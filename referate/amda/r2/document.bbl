@@ -9,4 +9,10 @@ M.~Stanger and S.~Gould, ``Everything you need to know about beer, in one
   chart.''
   \url{https://www.businessinsider.com/different-types-of-beer-2014-12}, 2014.
 
+\bibitem{MultilabelClassification}
+C.~Beleites, R.~Salzer, and V.~Sergo, ``Validation of soft classification
+  models using partial class memberships: An extended concept of sensitivity
+  and co. applied to the grading of astrocytoma tissues.,'' {\em Chemometrics
+  and Intelligent Laboratory Systems}, vol.~122, pp.~12--22, 2013.
+
 \end{thebibliography}

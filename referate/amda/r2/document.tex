@@ -49,7 +49,25 @@
 		\caption{Mapping of beer styles from the original dataset}
 		\label{fig:styleMapping}
 	\end{figure}
+
+	\section{Evaluation metrics}
+	The direction chosen for evaluation is how well the clusters found separate the initial dataset by beer types. In order to do this, each cluster is labeled with the most common style of beer among its elements. This turns our problem intro a multi-label classification one.
 	
+	The metrics used are the ones described by Beleites at al.\cite{MultilabelClassification} for multi-class problems. First of all, a confusion matrix is computed, which is a \(lxl\) matrix where l is the number of features. Each element (x, y) in the confusion matrix has a value meaning how many times a data point with label x has been classified as having label y. Precision and recall are then calculated for each label, simulating the binary evaluation. 
+	
+	Precision, also called positive predictive value, is a fraction that represents how many elements classified with a label have been assigned correctly. Recall, also known as sensitivity, is the fraction of instances correctly assigned to a class and all instances from that class. For the binary case, precision and recall can be calculated as in figure \ref{eq:PrecRecall}, where tp, fp, fn stand for true positives, false positives and false negatives. This can be extended to the confusion matrix, for each row, as follows: precision is the fraction of the value on the diagonal and the sum of values on the column, recall is the value on the diagonal divided by the sum of values on the row. The precision and recall of the multi-label classifier can then be computed as the means of the values obtained from the previous step.
+	
+	\begin{equation}
+	\label{eq:PrecRecall}
+	precision = \frac{tp}{tp + fp} \quad recall = \frac{tp}{tp + fn}
+	\end{equation}
+	
+	F1 score is a combined measure of precision and recall, used to provide a single measurement for the system. It represents the harmonic mean of the two values, as in figure \ref{eq:F1}, where mp and mr are mean precision and mean recall.
+	
+	\begin{equation}
+	\label{eq:F1}
+	F1 = \frac{2 * mp * mr}{mp + mr}
+	\end{equation}
 	
 	\newpage
 	\bibliography{references_document}
