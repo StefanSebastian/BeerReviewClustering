@@ -1,3 +1,7 @@
 \contentsline {section}{\numberline {1}Dataset}{3}{section.1}
 \contentsline {section}{\numberline {2}Parameters}{4}{section.2}
 \contentsline {section}{\numberline {3}Evaluation metrics}{4}{section.3}
+\contentsline {section}{\numberline {4}Results}{5}{section.4}
+\contentsline {subsection}{\numberline {4.1}Multi-label classification score}{5}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Heatmap}{5}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Common words per cluster}{5}{subsection.4.3}

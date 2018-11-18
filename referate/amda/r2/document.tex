@@ -92,6 +92,44 @@
 	F1 = \frac{2 * mp * mr}{mp + mr}
 	\end{equation}
 	
+	\section{Results}
+	\subsection{Multi-label classification score}
+	The correlation between the beer styles of the data points and the type that is most prevalent in the resulting clusters was chose as a measure of evaluation. For the best run, the result can be seen in table \ref{tab:results}. These were obtained using the random seed initialization method.
+	
+	\begin{center}
+		\label{tab:results}
+		\begin{tabular}{ |c|c| } 
+			\hline
+			Mean precision & 0.537 \\
+			Mean recall & 0.532 \\
+			F1 score & 0.534 \\
+			\hline
+		\end{tabular}
+	\end{center}
+
+	\subsection{Heatmap}
+	In order to better visualize the results a heatmap was generated. Visible in figure \ref{fig:heatmap}, the diagram helps visualize which style of beer is more common in which cluster. As expected, there is a clear separation for most of the dominant styles in each cluster. This is best observed for the following cluster, style pairs: 0 with Porter, 1 with Stout, 2 with Pale Lager, 4 with Wheat Beer, 5 with Belgian Ale, 6 with Fruit/Vegetable Beer and 7 with Barleywine. For cluster 3 there are two dominant classes : Pale Ale and Amber, which can be explained by the fact that Amber is a particular style of ale. For cluster 8 there is no clear majority, meaning it might be a collection of outliers from other styles.
+	
+	\begin{figure}
+		\includegraphics[width=\linewidth]{resources/9500rheatmap.png}
+		\caption{Heatmap of beer styles per cluster}
+		\label{fig:heatmap}
+	\end{figure}
+	
+	\subsection{Common words per cluster}
+	In order to interpret what features these clusters have in common, we can look at the most popular words for each cluster, identified by id. Figure \ref{fig:words} shows the 10 words with the highest tf-idf score for the mean of each cluster. Looking at this figure we can find the reason for the shape of cluster 8, as the most common words are general words used in beer description, like 'beer', 'taste', 'drink', 'flavour', which can be applied to any beer style. 
+	
+	Another thing we can observe from the table of common words is the difference between 'Porter' and 'Stout' styles, which are often put under the same category. According to the diagram, Porter beers tend to have a stronger chocolate, roast, coffee taste while Stouts also have a fruity, citrus taste.
+	
+	An interesting observation is that while the Wheat Beer style is clearly associated with cluster number 4, the feature words for this cluster: 'chocolate', 'dark', 'roast' are not at all representative of the style.
+	
+	\begin{figure}
+		\includegraphics[width=\linewidth]{resources/words.png}
+		\caption{Most common words for each cluster}
+		\label{fig:words}
+	\end{figure}
+	
+	
 	\newpage
 	\bibliography{references_document}
 	\bibliographystyle{ieeetr}

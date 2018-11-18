@@ -49,7 +49,10 @@ def make_heatmap(labels, beer_df):
     # first col = cluster, following cols are values for beer styles
     sns.heatmap(clusters.unstack(level='beer_style'), ax=ax, cmap='Reds')
     ax.set_ylabel('cluster_id', fontdict={'weight': 'bold', 'size': 26})
-    plt.xticks(rotation=30)
+    cbar = ax.collections[0].colorbar
+    cbar.ax.tick_params(labelsize=20)
+    plt.xticks(rotation=20)
+    ax.tick_params(labelsize=17)
     plt.show()
 
 

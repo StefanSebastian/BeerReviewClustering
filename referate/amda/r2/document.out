@@ -1,3 +1,7 @@
 \BOOKMARK [1][-]{section.1}{Dataset}{}% 1
 \BOOKMARK [1][-]{section.2}{Parameters}{}% 2
 \BOOKMARK [1][-]{section.3}{Evaluation metrics}{}% 3
+\BOOKMARK [1][-]{section.4}{Results}{}% 4
+\BOOKMARK [2][-]{subsection.4.1}{Multi-label classification score}{section.4}% 5
+\BOOKMARK [2][-]{subsection.4.2}{Heatmap}{section.4}% 6
+\BOOKMARK [2][-]{subsection.4.3}{Common words per cluster}{section.4}% 7
