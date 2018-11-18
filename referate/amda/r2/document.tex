@@ -11,6 +11,8 @@
 
 \usepackage{amsmath}
 
+\usepackage{multirow}
+
 \begin{document}
 	\title{}
 	\author{Stefan Sebastian, 242}
@@ -49,6 +51,25 @@
 		\caption{Mapping of beer styles from the original dataset}
 		\label{fig:styleMapping}
 	\end{figure}
+
+	\section{Parameters}
+	The most important parameter used in the experiment is k, the number of clusters. This was chosen to be the number of distinct beer styles in the dataset, 9, as the reviews for beers of the same type should be similar to each other.
+	
+	The number of features for each data point is equivalent to how many word frequencies are considered. This was determined experimentally by running the basic algorithm with some different feature values. The results, shown in table \ref{tab:features}, indicate that until around 1000 there is the biggest growth in performance.
+	
+	\begin{center}
+		\label{tab:features}
+		\begin{tabular}{ |c|c|c|c| } 
+			\hline
+			Nr features & Precision & Recall & F1 \\
+			\hline
+			200 & 0.420 & 0.481 & 0.449 \\
+			700 & 0.501 & 0.554 & 0.526 \\
+			1000 & 0.537 & 0.532 & 0.534 \\
+			1500 & 0.515 & 0.528 & 0.521 \\
+			\hline
+		\end{tabular}
+	\end{center}
 
 	\section{Evaluation metrics}
 	The direction chosen for evaluation is how well the clusters found separate the initial dataset by beer types. In order to do this, each cluster is labeled with the most common style of beer among its elements. This turns our problem intro a multi-label classification one.
