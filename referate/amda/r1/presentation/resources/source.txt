@@ -1,1 +1,3 @@
 fig1 - http://stanford.edu/~cpiech/cs221/handouts/kmeans.html
+fig3 - https://en.wikipedia.org/wiki/K-d_tree#/media/File:Tree_0001.svg
+     - https://en.wikipedia.org/wiki/K-d_tree#/media/File:Kdtree_2d.svg
