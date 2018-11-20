@@ -1,3 +1,6 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: document.aux
 The style file: ieeetr.bst
 Database file #1: references_document.bib
+Warning--empty publisher in TfIdfBook
+Warning--empty booktitle in SnowballStemmer
+(There were 2 warnings)

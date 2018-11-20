@@ -1,7 +1,11 @@
 \BOOKMARK [1][-]{section.1}{Dataset}{}% 1
-\BOOKMARK [1][-]{section.2}{Parameters}{}% 2
-\BOOKMARK [1][-]{section.3}{Evaluation metrics}{}% 3
-\BOOKMARK [1][-]{section.4}{Results}{}% 4
-\BOOKMARK [2][-]{subsection.4.1}{Multi-label classification score}{section.4}% 5
-\BOOKMARK [2][-]{subsection.4.2}{Heatmap}{section.4}% 6
-\BOOKMARK [2][-]{subsection.4.3}{Common words per cluster}{section.4}% 7
+\BOOKMARK [1][-]{section.2}{Solution description}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Model overview}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Technologies used}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Parameters}{section.2}% 5
+\BOOKMARK [1][-]{section.3}{Evaluation}{}% 6
+\BOOKMARK [2][-]{subsection.3.1}{Metrics}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.2}{Results}{section.3}% 8
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Multi-label classification score}{subsection.3.2}% 9
+\BOOKMARK [3][-]{subsubsection.3.2.2}{Heatmap}{subsection.3.2}% 10
+\BOOKMARK [3][-]{subsubsection.3.2.3}{Common words per cluster}{subsection.3.2}% 11

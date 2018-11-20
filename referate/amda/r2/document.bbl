@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{BeerAdvocateData}
 ``Beer advocate reviews.''
@@ -8,6 +8,53 @@
 M.~Stanger and S.~Gould, ``Everything you need to know about beer, in one
   chart.''
   \url{https://www.businessinsider.com/different-types-of-beer-2014-12}, 2014.
+
+\bibitem{TfIdfBook}
+D.~Jurafsky and J.~Martin, {\em Speech and Language Processing: An Introduction
+  to Natural Language Processing, Computational Linguistics, and Speech
+  Recognition}, vol.~2.
+\newblock 02 2008.
+
+\bibitem{SnowballStemmer}
+M.~F. Porter, ``Readings in information retrieval,'' ch.~An Algorithm for
+  Suffix Stripping, pp.~313--316, San Francisco, CA, USA: Morgan Kaufmann
+  Publishers Inc., 1997.
+
+\bibitem{KdTreeKmeans}
+S.~J. Redmond and C.~Heneghan, ``A method for initialising the k-means
+  clustering algorithm using kd-trees,'' {\em Pattern Recognition Letters},
+  vol.~28, no.~8, pp.~965 -- 973, 2007.
+
+\bibitem{Pandas}
+W.~McKinney, ``Data structures for statistical computing in python,'' in {\em
+  Proceedings of the 9th Python in Science Conference} (S.~van~der Walt and
+  J.~Millman, eds.), pp.~51 -- 56, 2010.
+
+\bibitem{NLTK}
+E.~Loper and S.~Bird, ``Nltk: The natural language toolkit,'' in {\em
+  Proceedings of the ACL-02 Workshop on Effective Tools and Methodologies for
+  Teaching Natural Language Processing and Computational Linguistics - Volume
+  1}, ETMTNLP '02, (Stroudsburg, PA, USA), pp.~63--70, Association for
+  Computational Linguistics, 2002.
+
+\bibitem{sk-learn}
+F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel,
+  M.~Blondel, P.~Prettenhofer, R.~Weiss, V.~Dubourg, J.~Vanderplas, A.~Passos,
+  D.~Cournapeau, M.~Brucher, M.~Perrot, and Édouard Duchesnay, ``Scikit-learn:
+  Machine learning in python,'' {\em Journal of Machine Learning Research},
+  vol.~12, 2011.
+
+\bibitem{Matplotlib}
+J.~D. Hunter, ``Matplotlib: A 2d graphics environment,'' {\em Computing in
+  Science and Engineering}, vol.~9, pp.~90 -- 95, 2007.
+
+\bibitem{Seaborn}
+M.~Waskom, O.~Botvinnik, D.~O'Kane, P.~Hobson, S.~Lukauskas, D.~C. Gemperline,
+  T.~Augspurger, Y.~Halchenko, J.~B. Cole, J.~Warmenhoven, J.~de~Ruiter,
+  C.~Pye, S.~Hoyer, J.~Vanderplas, S.~Villalba, G.~Kunter, E.~Quintero,
+  P.~Bachant, M.~Martin, K.~Meyer, A.~Miles, Y.~Ram, T.~Yarkoni, M.~L.
+  Williams, C.~Evans, C.~Fitzgerald, Brian, C.~Fonnesbeck, A.~Lee, and
+  A.~Qalieh, ``mwaskom/seaborn: v0.8.1 (september 2017),'' Sept. 2017.
 
 \bibitem{MultilabelClassification}
 C.~Beleites, R.~Salzer, and V.~Sergo, ``Validation of soft classification

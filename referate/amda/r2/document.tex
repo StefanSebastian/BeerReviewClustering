@@ -13,6 +13,8 @@
 
 \usepackage{multirow}
 
+\usepackage{float} % figure placement
+
 \begin{document}
 	\title{}
 	\author{Stefan Sebastian, 242}
@@ -26,6 +28,11 @@
 	\newpage
 	\tableofcontents
 	\newpage
+	
+	\section{Introduction}
+	\subsection{Motivation}
+	The problem and why do I solve it
+	\subsection{Related work}
 	
 	\section{Dataset}
 	The dataset used for this experiment is a collection of beer reviews taken from the BeerAdvocate website. The original dataset was made up out of 1.5 million user reviews, from 33387 different users, collected between 1998 and 2011. It is not available at this time but I found a subset of around 500 thousand reviews on data.world\cite{BeerAdvocateData}. 
@@ -52,7 +59,30 @@
 		\label{fig:styleMapping}
 	\end{figure}
 
-	\section{Parameters}
+	\section{Solution description}
+	\subsection{Model overview}
+	In order to process the textual data, some features need to be extracted by using natural language processing techniques. The method used to extract numerical features about the words in the dataset is the Tf-Idf vectorizer. Tf-Idf\cite{TfIdfBook} stands for term frequency-inverse document frequency and is the most popular method for weighting term. In brief, the importance of a word is proportional to the number of times it appears in a document and inversely proportional to the number of documents it appears in. Before applying Tf-Idf, the review texts are tokenized, the stop words are removed and then each word is stemmed. Stemming is the process of reducing a word to its root, or base form, and the algorithm selected for this is the Snowball Stemmer\cite{SnowballStemmer}, which works by defining a set of rules for replacing word endings. The number of terms considered as features has been determined experimentally. Finally, the dataset contains a list of array that denotes how important is each considered term for every review.
+	
+	To solve the clustering problem the classic K-Means algorithm is used with two different seed initialization methods: random values and k-d trees. The first method is very simple conceptually, just choose k random points from the dataset. The second method has been described by Redmon and Heneghan\cite{KdTreeKmeans}. The basic idea is to use this data structure to divide multidimensional features into buckets and the make density estimation depending on the size of the bucket and the volume of the bounding box.
+	
+	The resulting clusters are evaluated based on initial beer style labels and the dominant terms in each cluster.
+	
+	\begin{figure}[H]
+		\includegraphics[width=\linewidth]{resources/model.png}
+		\caption{Diagram of the transformations on the dataset}
+		\label{fig:modelOverview}
+	\end{figure}
+
+	\subsection{Technologies used}
+	The project was implemented in the Python programming language on the Anaconda distribution. The clustering and seed initialization algorithms were implemented from scratch.
+	
+	For data analysis and preprocessing the pandas\cite{Pandas} library was used, which provides some efficient data manipulation and analysis tools. The group by function was particularly useful for operations on all data of a particular beer style. 
+	
+	The algorithms for tokenizing and stemming were taken from the nltk library\cite{NLTK}, which is one of the most popular tools for natural language processing. The Tf-Idf vectorizer implementation was provided by the scikit-learn library\cite{sk-learn}, which contains a comprehensive collection of data analysis algorithms.
+	
+	In order to visualize the data and the results the following plotting tools were used. Matplotlib\cite{Matplotlib} provided a tool to make bar charts in order to observe the initial data distribution and Seaborn\cite{Seaborn} was used to generate a heatmap of the resulting clusters.
+		
+	\subsection{Parameters}
 	The most important parameter used in the experiment is k, the number of clusters. This was chosen to be the number of distinct beer styles in the dataset, 9, as the reviews for beers of the same type should be similar to each other.
 	
 	The number of features for each data point is equivalent to how many word frequencies are considered. This was determined experimentally by running the basic algorithm with some different feature values. The results, shown in table \ref{tab:features}, indicate that until around 1000 there is the biggest growth in performance.
@@ -73,7 +103,8 @@
 
 	Two methods were tested for seed initialization: random points and kd-tree based. The run with kd-trees obtained a 0.47 F1 score while, random initialization got a 0.53 F1 score. This might be caused by finding good starting points through randomness or that the large number of features is not a good fit for the kd-tree data structure.
 
-	\section{Evaluation metrics}
+	\section{Evaluation}
+	\subsection{Metrics}
 	The direction chosen for evaluation is how well the clusters found separate the initial dataset by beer types. In order to do this, each cluster is labeled with the most common style of beer among its elements. This turns our problem intro a multi-label classification one.
 	
 	The metrics used are the ones described by Beleites at al.\cite{MultilabelClassification} for multi-class problems. First of all, a confusion matrix is computed, which is a \(lxl\) matrix where l is the number of features. Each element (x, y) in the confusion matrix has a value meaning how many times a data point with label x has been classified as having label y. Precision and recall are then calculated for each label, simulating the binary evaluation. 
@@ -92,8 +123,8 @@
 	F1 = \frac{2 * mp * mr}{mp + mr}
 	\end{equation}
 	
-	\section{Results}
-	\subsection{Multi-label classification score}
+	\subsection{Results}
+	\subsubsection{Multi-label classification score}
 	The correlation between the beer styles of the data points and the type that is most prevalent in the resulting clusters was chose as a measure of evaluation. For the best run, the result can be seen in table \ref{tab:results}. These were obtained using the random seed initialization method.
 	
 	\begin{center}
@@ -107,7 +138,7 @@
 		\end{tabular}
 	\end{center}
 
-	\subsection{Heatmap}
+	\subsubsection{Heatmap}
 	In order to better visualize the results a heatmap was generated. Visible in figure \ref{fig:heatmap}, the diagram helps visualize which style of beer is more common in which cluster. As expected, there is a clear separation for most of the dominant styles in each cluster. This is best observed for the following cluster, style pairs: 0 with Porter, 1 with Stout, 2 with Pale Lager, 4 with Wheat Beer, 5 with Belgian Ale, 6 with Fruit/Vegetable Beer and 7 with Barleywine. For cluster 3 there are two dominant classes : Pale Ale and Amber, which can be explained by the fact that Amber is a particular style of ale. For cluster 8 there is no clear majority, meaning it might be a collection of outliers from other styles.
 	
 	\begin{figure}
@@ -116,7 +147,7 @@
 		\label{fig:heatmap}
 	\end{figure}
 	
-	\subsection{Common words per cluster}
+	\subsubsection{Common words per cluster}
 	In order to interpret what features these clusters have in common, we can look at the most popular words for each cluster, identified by id. Figure \ref{fig:words} shows the 10 words with the highest tf-idf score for the mean of each cluster. Looking at this figure we can find the reason for the shape of cluster 8, as the most common words are general words used in beer description, like 'beer', 'taste', 'drink', 'flavour', which can be applied to any beer style. 
 	
 	Another thing we can observe from the table of common words is the difference between 'Porter' and 'Stout' styles, which are often put under the same category. According to the diagram, Porter beers tend to have a stronger chocolate, roast, coffee taste while Stouts also have a fruity, citrus taste.
@@ -129,6 +160,7 @@
 		\label{fig:words}
 	\end{figure}
 	
+	\section{Conclusions}
 	
 	\newpage
 	\bibliography{references_document}
