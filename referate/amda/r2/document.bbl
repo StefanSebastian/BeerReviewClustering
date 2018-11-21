@@ -1,5 +1,31 @@
 \begin{thebibliography}{10}
 
+\bibitem{BeerArticleTime}
+C.~Misfud, ``Why beer is the world’s most beloved drink.''
+  \url{http://time.com/5407072/why-beer-is-most-popular-drink-world/?#}, 2018.
+
+\bibitem{BeerStats}
+A.~M. Research, ``Beer market by type - global opportunity analysis and
+  industry forecast 2017-2025.''
+  \url{https://www.alliedmarketresearch.com/beer-market}, 2017.
+
+\bibitem{CraftBeerStats}
+``Global craft beer market report 2018.''
+  \url{https://www.prnewswire.com/news-releases/global-craft-beer-market-report-2018-300657436.html},
+  2018.
+
+\bibitem{LARA}
+H.~Wang, Y.~Lu, and C.~Zhai, ``Latent aspect rating analysis on review text
+  data: A rating regression approach,'' in {\em Proceedings of the 16th ACM
+  SIGKDD International Conference on Knowledge Discovery and Data Mining}, KDD
+  '10, (New York, NY, USA), pp.~783--792, ACM, 2010.
+
+\bibitem{MARA}
+C.~Iacob and R.~Harrison, ``Retrieving and analyzing mobile apps feature
+  requests from online reviews,'' in {\em Proceedings of the 10th Working
+  Conference on Mining Software Repositories}, MSR '13, (Piscataway, NJ, USA),
+  pp.~41--44, IEEE Press, 2013.
+
 \bibitem{BeerAdvocateData}
 ``Beer advocate reviews.''
   \url{https://data.world/petergensler/beer-advocate-reviews}, 2011.

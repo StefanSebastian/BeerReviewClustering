@@ -22,7 +22,7 @@
 	\maketitle
 	
 	\begin{abstract}
-	
+	TODO abstract
 	\end{abstract}
 
 	\newpage
@@ -31,8 +31,16 @@
 	
 	\section{Introduction}
 	\subsection{Motivation}
-	The problem and why do I solve it
+	Beer is one of the oldest and most popular alcoholic drinks. It is a staple drink in many societies and has been around ever since the formation of human civilizations, with evidence that dates it to more than 10,000 years ago\cite{BeerArticleTime}. It's popularity is attributed to having a moderate quantity of alcohol, which leads to more positive drinking experiences, and the fact that it can be drunk at any social event\cite{BeerArticleTime}.
+	
+	The global beer market was valued at 593\$ billion and is expected to rise to 685\$ billion by 2025\cite{BeerStats}. The most popular beer style is by far lager, but others are rising in popularity. Craft beer is a type of beer that is produced in microbreweries, in a traditional style and with an emphasis on taste and variety. The global craft beer market accounted for 38\$ billion and is growing at an explosive rate of 14.1\% each year\cite{CraftBeerStats}.
+	
+	 It is obvious that there is a huge public interest in this drink, and any insights into what consumers think about beer could have serious economic benefits. This paper presents an experiment on extracting information using unsupervised learning on beer reviews. The main goals are finding natural clusters among beer descriptions and what words are used to describe similar beers. Also the clusters are analyzed by the most common beer styles to see if there is a correlation between reviews and beer types.
+	
 	\subsection{Related work}
+	Most papers on review analysis are focused on extracting information about aspects present in the review. For example, Lu et al.\cite{LARA} propose an algorithm for inferring the aspects considered in a review and assigning a score to them, and use it on hotel reviews from tripadvisor. The algorithm, called LARA, works in two steps. In the first step, given some keywords for the aspects, it associates each sentence in a review with the aspect for which it has the biggest overlap. In the second step, it computes a score for each aspect based on the sentiments present in the sentences found in previous steps.
+	
+	Another direction of review analysis is to use linguistic rules in a constrained domain. For instance, Iacob and Rachel\cite{MARA}, created an algorithm for automatically extracting and scoring feature request from mobile application reviews. The algorithm uses a set of 237 rules which were build by manual analysis of review data. An example rule is "(adding) \textless request\textgreater would (\textless ADVERB\textgreater) be \textless POSITIVE-ADJECTIVE\textgreater". The Latent Dirichlet Allocation algorithm is then used on the discovered feature requests in order to find topics.
 	
 	\section{Dataset}
 	The dataset used for this experiment is a collection of beer reviews taken from the BeerAdvocate website. The original dataset was made up out of 1.5 million user reviews, from 33387 different users, collected between 1998 and 2011. It is not available at this time but I found a subset of around 500 thousand reviews on data.world\cite{BeerAdvocateData}. 
@@ -41,7 +49,7 @@
 	
 	On exploratory data analysis, 407 duplicate and 119 missing reviews were found. Also there are 104 distinct beer styles and the amount of data for each of them is quite imbalanced as can be see in figure \ref{fig:initialDistribution}, where each bar represents a beer style with a size proportional to the number of reviews for it.
 	
-	\begin{figure}
+	\begin{figure}[h]
 		\includegraphics[width=\linewidth]{resources/InitialDistribution.png}
 		\caption{A plot of the number of reviews per beer style}
 		\label{fig:initialDistribution}
