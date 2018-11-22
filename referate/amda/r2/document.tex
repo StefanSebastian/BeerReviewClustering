@@ -38,9 +38,26 @@
 	 It is obvious that there is a huge public interest in this drink, and any insights into what consumers think about beer could have serious economic benefits. This paper presents an experiment on extracting information using unsupervised learning on beer reviews. The main goals are finding natural clusters among beer descriptions and what words are used to describe similar beers. Also the clusters are analyzed by the most common beer styles to see if there is a correlation between reviews and beer types.
 	
 	\subsection{Related work}
+	
+	\subsubsection{Text clustering}
+	A comprehensive review on text document clustering similarity measures was published by Anna Huang\cite{TextClustering}. The paper describes a complete text clustering process with emphasis on distance measurements. Features are extracted using the tf-idf method and the clustering algorithm is the basic K-means variant. A set of similarity measures are studies such as cosine similarity, euclidean distance, Jaccard coefficient, etc. The datasets considered vary from news to scientific articles.
+	
+	An implementation of a Scatter-Gather document browsing system was presented by Larsen and Aone\cite{ScatterGather}. The system applies document clustering on the whole dataset, then when the user selects a group, it clusters the selected group into smaller groups. This operation can be extends until each group contains only one document. The algorithm used by the system is K-means with an improvement in seed selection consisting in updating the initial means after every point assignment. The algorithm uses as a feature extraction method the tf-idf vectorizer.
+	
+	An interesting approach to text clustering is the one developed by Hu et al.\cite{WikipediaKmeans}. Their method consists of enriching text information by using Wikipedia concept and category data. A dataset was made from Wikipedia articles related to different concepts. When a document is evaluated the term weight is calculated using the combined tf-idf score from the training and the Wikipedia concept dataset. The category score is built by analyzing the most important concepts of the document. The clustering algorithm used in the experiment was spherical K-means. This method was tested on three datasets and was shown to obtain better results than simple clustering over tf-idf scores.
+	
+	\subsubsection{Review analysis}
 	Most papers on review analysis are focused on extracting information about aspects present in the review. For example, Lu et al.\cite{LARA} propose an algorithm for inferring the aspects considered in a review and assigning a score to them, and use it on hotel reviews from tripadvisor. The algorithm, called LARA, works in two steps. In the first step, given some keywords for the aspects, it associates each sentence in a review with the aspect for which it has the biggest overlap. In the second step, it computes a score for each aspect based on the sentiments present in the sentences found in previous steps.
 	
 	Another direction of review analysis is to use linguistic rules in a constrained domain. For instance, Iacob and Rachel\cite{MARA}, created an algorithm for automatically extracting and scoring feature request from mobile application reviews. The algorithm uses a set of 237 rules which were build by manual analysis of review data. An example rule is "(adding) \textless request\textgreater would (\textless ADVERB\textgreater) be \textless POSITIVE-ADJECTIVE\textgreater". The Latent Dirichlet Allocation algorithm is then used on the discovered feature requests in order to find topics.
+	
+	\subsubsection{Experiments on beer datasets}
+	McAuley and Leskovec\cite{ExperienceReview} built a recommender system that adapts to user experience. The motivation was that the users' preferences evolve as they acquire experience. The datasets used for the experiment included the BeerAdvocate review dataset\cite{BeerAdvocateData} because of the fact that beer is one of the most widespread acquired tastes. The experience label is learned by the model by using rating and timestamp data.
+	
+	Braun and Timpe\cite{BeerWineReviews} scrape data from BeerAdvocate, RateBeer and CellarTracker websites. These contain user text reviews and numerical ratings for different types of beer and wine. The goal of the experiment is to predict scores based on the given review. The features are extracted using the bag-of-words model for single words an bigrams. To obtain more relevant features, the input data is stemmed, cleared of stop words, and the tokens are tagged by part of speech and only adjectives, nouns, verbs and adverbs are kept. The algorithms used for classification are Naive Bayes and Support Vector Machines. The model obtained an accuracy of up to 87\%.
+	
+	\subsection{Paper outline}
+	TODO outline per chapters
 	
 	\section{Dataset}
 	The dataset used for this experiment is a collection of beer reviews taken from the BeerAdvocate website. The original dataset was made up out of 1.5 million user reviews, from 33387 different users, collected between 1998 and 2011. It is not available at this time but I found a subset of around 500 thousand reviews on data.world\cite{BeerAdvocateData}. 
