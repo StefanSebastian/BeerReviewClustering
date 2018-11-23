@@ -16,13 +16,13 @@
 \usepackage{float} % figure placement
 
 \begin{document}
-	\title{}
+	\title{Clustering beer text reviews using the K-means algorithm}
 	\author{Stefan Sebastian, 242}
 	\date{}
 	\maketitle
 	
 	\begin{abstract}
-	TODO abstract
+	Beer is the most popular alcoholic drink and has been around for a long time. In addition, a craft beer revolution is going on at the moment with a lot of new varieties coming out and being actively discussed by enthusiasts. Beer marketers could profit if they had an automated way of processing the thousands of reviews published on beer dedicated websites. This paper presents such a solution of extracting information from beer review data by unsupervised learning. A dataset of around 85 thousand reviews is analyzed by extracting Tf-Idf information from each row and then passing that into a K-means clustering algorithm. The resulting clusters are then associated with the most common beer style of the elements inside. This allows us to measure the correlation between reviews and the type of beer being reviewed. A discussion is then made based on the terms with the largest weights for each cluster center. The model obtains a F1 score of 0.53 on a 9 label classification problem indicating that there is indeed a correlation between a beer's review and its style.
 	\end{abstract}
 
 	\newpage
@@ -35,29 +35,33 @@
 	
 	The global beer market was valued at 593\$ billion and is expected to rise to 685\$ billion by 2025\cite{BeerStats}. The most popular beer style is by far lager, but others are rising in popularity. Craft beer is a type of beer that is produced in microbreweries, in a traditional style and with an emphasis on taste and variety. The global craft beer market accounted for 38\$ billion and is growing at an explosive rate of 14.1\% each year\cite{CraftBeerStats}.
 	
-	 It is obvious that there is a huge public interest in this drink, and any insights into what consumers think about beer could have serious economic benefits. This paper presents an experiment on extracting information using unsupervised learning on beer reviews. The main goals are finding natural clusters among beer descriptions and what words are used to describe similar beers. Also the clusters are analyzed by the most common beer styles to see if there is a correlation between reviews and beer types.
+	It is obvious that there is a huge public interest in this drink, and any insights into what consumers think about beer could have serious economic benefits. This paper presents an experiment on extracting information using unsupervised learning on beer reviews. The main goals are finding natural clusters among beer descriptions and what words are used to describe similar beers. Also the clusters are analyzed by the most common beer styles to see if there is a correlation between reviews and beer types.
 	
-	\subsection{Related work}
+	\subsection{Paper outline}
+	The introductory section contains the motivation for the experiment and some insights into the studied domain. A short list of objectives is also put forth. The second section is a short survey of related work in terms of text clustering, review analysis and beer data mining. Next, the dataset used for the experiment is presented along with the exploratory data analysis and preprocessing techniques.
 	
-	\subsubsection{Text clustering}
+	The solution description section starts with a detailed presentation of the proposed model for data analysis. This is followed by some implementation discussion in subsection 'Technologies used'. Finally, the reasoning behind the selection of parameters for the model is given.
+	
+	The evaluation section describes the metrics and methodologies used to measure the performance of the proposed model. A concrete set of results is presented which is followed by some discussion based on the shape and means of the discovered clusters. Finally, the conclusion reiterate the results and propose some plans for future research.
+	
+	\section{Related work}
+	
+	\subsection{Text clustering}
 	A comprehensive review on text document clustering similarity measures was published by Anna Huang\cite{TextClustering}. The paper describes a complete text clustering process with emphasis on distance measurements. Features are extracted using the tf-idf method and the clustering algorithm is the basic K-means variant. A set of similarity measures are studies such as cosine similarity, euclidean distance, Jaccard coefficient, etc. The datasets considered vary from news to scientific articles.
 	
 	An implementation of a Scatter-Gather document browsing system was presented by Larsen and Aone\cite{ScatterGather}. The system applies document clustering on the whole dataset, then when the user selects a group, it clusters the selected group into smaller groups. This operation can be extends until each group contains only one document. The algorithm used by the system is K-means with an improvement in seed selection consisting in updating the initial means after every point assignment. The algorithm uses as a feature extraction method the tf-idf vectorizer.
 	
 	An interesting approach to text clustering is the one developed by Hu et al.\cite{WikipediaKmeans}. Their method consists of enriching text information by using Wikipedia concept and category data. A dataset was made from Wikipedia articles related to different concepts. When a document is evaluated the term weight is calculated using the combined tf-idf score from the training and the Wikipedia concept dataset. The category score is built by analyzing the most important concepts of the document. The clustering algorithm used in the experiment was spherical K-means. This method was tested on three datasets and was shown to obtain better results than simple clustering over tf-idf scores.
 	
-	\subsubsection{Review analysis}
+	\subsection{Review analysis}
 	Most papers on review analysis are focused on extracting information about aspects present in the review. For example, Lu et al.\cite{LARA} propose an algorithm for inferring the aspects considered in a review and assigning a score to them, and use it on hotel reviews from tripadvisor. The algorithm, called LARA, works in two steps. In the first step, given some keywords for the aspects, it associates each sentence in a review with the aspect for which it has the biggest overlap. In the second step, it computes a score for each aspect based on the sentiments present in the sentences found in previous steps.
 	
 	Another direction of review analysis is to use linguistic rules in a constrained domain. For instance, Iacob and Rachel\cite{MARA}, created an algorithm for automatically extracting and scoring feature request from mobile application reviews. The algorithm uses a set of 237 rules which were build by manual analysis of review data. An example rule is "(adding) \textless request\textgreater would (\textless ADVERB\textgreater) be \textless POSITIVE-ADJECTIVE\textgreater". The Latent Dirichlet Allocation algorithm is then used on the discovered feature requests in order to find topics.
 	
-	\subsubsection{Experiments on beer datasets}
+	\subsection{Experiments on beer datasets}
 	McAuley and Leskovec\cite{ExperienceReview} built a recommender system that adapts to user experience. The motivation was that the users' preferences evolve as they acquire experience. The datasets used for the experiment included the BeerAdvocate review dataset\cite{BeerAdvocateData} because of the fact that beer is one of the most widespread acquired tastes. The experience label is learned by the model by using rating and timestamp data.
 	
 	Braun and Timpe\cite{BeerWineReviews} scrape data from BeerAdvocate, RateBeer and CellarTracker websites. These contain user text reviews and numerical ratings for different types of beer and wine. The goal of the experiment is to predict scores based on the given review. The features are extracted using the bag-of-words model for single words an bigrams. To obtain more relevant features, the input data is stemmed, cleared of stop words, and the tokens are tagged by part of speech and only adjectives, nouns, verbs and adverbs are kept. The algorithms used for classification are Naive Bayes and Support Vector Machines. The model obtained an accuracy of up to 87\%.
-	
-	\subsection{Paper outline}
-	TODO outline per chapters
 	
 	\section{Dataset}
 	The dataset used for this experiment is a collection of beer reviews taken from the BeerAdvocate website. The original dataset was made up out of 1.5 million user reviews, from 33387 different users, collected between 1998 and 2011. It is not available at this time but I found a subset of around 500 thousand reviews on data.world\cite{BeerAdvocateData}. 
@@ -132,7 +136,7 @@
 	\subsection{Metrics}
 	The direction chosen for evaluation is how well the clusters found separate the initial dataset by beer types. In order to do this, each cluster is labeled with the most common style of beer among its elements. This turns our problem intro a multi-label classification one.
 	
-	The metrics used are the ones described by Beleites at al.\cite{MultilabelClassification} for multi-class problems. First of all, a confusion matrix is computed, which is a \(lxl\) matrix where l is the number of features. Each element (x, y) in the confusion matrix has a value meaning how many times a data point with label x has been classified as having label y. Precision and recall are then calculated for each label, simulating the binary evaluation. 
+	The metrics used are the ones described by Beleites at al.\cite{MultilabelClassification} for multi-class problems. First of all, a confusion matrix is computed, which is a $l\cdot l$ matrix where l is the number of features. Each element (x, y) in the confusion matrix has a value meaning how many times a data point with label x has been classified as having label y. Precision and recall are then calculated for each label, simulating the binary evaluation. 
 	
 	Precision, also called positive predictive value, is a fraction that represents how many elements classified with a label have been assigned correctly. Recall, also known as sensitivity, is the fraction of instances correctly assigned to a class and all instances from that class. For the binary case, precision and recall can be calculated as in figure \ref{eq:PrecRecall}, where tp, fp, fn stand for true positives, false positives and false negatives. This can be extended to the confusion matrix, for each row, as follows: precision is the fraction of the value on the diagonal and the sum of values on the column, recall is the value on the diagonal divided by the sum of values on the row. The precision and recall of the multi-label classifier can then be computed as the means of the values obtained from the previous step.
 	
@@ -186,6 +190,9 @@
 	\end{figure}
 	
 	\section{Conclusions}
+	The results of the clustering algorithm were, as expected, clusters around similar beer styles. In terms of multi-label classification the algorithm obtained a F1 score of 0.53 on 9 classes, which indicates there is a correlation. This was also confirmed by the heatmap of the clusters which indicated the poor performance on some of the beer styles. The means of the clusters tend to contain words descriptive of their associated styles with some exceptions.
+	
+	In terms of improvement, the paper shows that a more sophisticated seed selection method does not offer better results. Another direction worth researching is using more data. This experiment used only 85500 reviews out of the total 1.5 million, which could also be augment with data from other beer review websites. For this to be feasible some computation time optimizations would be useful. 
 	
 	\newpage
 	\bibliography{references_document}
