@@ -1,0 +1,10 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: document.aux
+The style file: ieeetr.bst
+Database file #1: references_document.bib
+Repeated entry---line 275 of file references_document.bib
+ : @article{KdTreeKmeans
+ :                      ,
+I'm skipping whatever remains of this entry
+Warning--empty publisher in TfIdfBook
+Warning--empty booktitle in SnowballStemmer
+(There was 1 error message)
