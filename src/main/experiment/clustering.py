@@ -1,7 +1,7 @@
-from src.main.config import features_path, clusters_path
-from src.main.algorithms.utils import serialize, deserialize, convert_sparse_matrix_to_lists, euclidean_distance
-from src.main.algorithms.kd_tree_seed.kd_tree_seed import KdTreeSeed
 from src.main.algorithms.kmeans import KMeans
+from src.main.algorithms.seed_selection.kd_tree_seed.kd_tree_seed import KdTreeSeed
+from src.main.algorithms.utils import serialize, deserialize, convert_sparse_matrix_to_lists, euclidean_distance
+from src.main.config import features_path, clusters_path
 
 
 def perform_clustering(feature_path):

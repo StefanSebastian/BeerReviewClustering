@@ -1,8 +1,7 @@
 from functools import reduce
 
+from src.main.algorithms.seed_selection.kd_tree_seed.utils import get_bounding_points
 from src.main.algorithms.utils import euclidean_distance
-
-from src.main.algorithms.kd_tree_seed.utils import get_bounding_points
 
 
 class LeafBucket:

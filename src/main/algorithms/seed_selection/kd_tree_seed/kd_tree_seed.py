@@ -1,11 +1,10 @@
+import math
 from functools import reduce
 
-import math
+from src.main.algorithms.seed_selection.kd_tree_seed.build_candidates import LeafBucket, CenterSelector
+from src.main.algorithms.seed_selection.kd_tree_seed.utils import get_bounding_points
 
-from src.main.algorithms.kd_tree_seed.kd_tree import KdTree
-
-from src.main.algorithms.kd_tree_seed.build_candidates import LeafBucket, CenterSelector
-from src.main.algorithms.kd_tree_seed.utils import get_bounding_points
+from src.main.algorithms.seed_selection.kd_tree_seed.kd_tree import KdTree
 
 
 class KdTreeSeed:
