@@ -71,7 +71,7 @@ class CenterSelector:
         self.leaf_buckets.sort(key=lambda x: x.density, reverse=True)
 
         first_seed = self.seed_extraction()
-        drop_count = int((1 / 5) * len(self.leaf_buckets))
+        drop_count = int((1 / 5) * len(self.leaf_buckets)) # drop buckets with low density and compute another pair of seeds
         self.leaf_buckets = self.leaf_buckets[:len(self.leaf_buckets) - drop_count]
         second_seed = self.seed_extraction()
 

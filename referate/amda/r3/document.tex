@@ -12,6 +12,9 @@
 \usepackage{amsmath}
 
 \usepackage{todonotes}
+\usepackage{float} % figure placement
+\usepackage[]{algorithm2e}
+\usepackage[T1]{fontenc}
 
 \begin{document}
 	\title{Software project: K-Means Improvements}
@@ -54,7 +57,7 @@
 	\section{Analysis}
 	In order to evaluate the accuracy of the implemented algorithms some test data sets were generated and the results were displayed in a graphical way. Clustering is usually evaluated by an expert in the field for which it is applied, meaning that it is difficult to find a general method for evaluating clustering algorithms.
 	
-	The method selected for generating test data was the $make_blobs$ function from $sk_learn$\cite{sk-learn}. For a quick evaluation of the algorithm a dataset of 1000 points was generated having the centers in $[1, 1, 1]$, $[4, 5, 6]$ and $[8, 9, 1]$ with a standard deviation of 1. 
+	The method selected for generating test data was the $make\_blobs$ function from $sk\_learn$\cite{sk-learn}. For a quick evaluation of the algorithm a dataset of 1000 points was generated having the centers in $[1, 1, 1]$, $[4, 5, 6]$ and $[8, 9, 1]$ with a standard deviation of 1. The points are then plotted using the matplotlib \cite{Matplotlib} library.
 	
 	The seed selection algorithms show promising initial candidates, marked by X in figure \ref{fig:seeds}. We can observe that both methods picked close to ideal initial seeds, each from a different cluster, which is a great improvement over random selection.
 	
@@ -95,6 +98,87 @@
 	A computational performance measurement is also done by logging the execution times. Using the previous dataset the difference between basic K-Means and Enhanced K-Means is barely noticeable, only a few milliseconds. However, on a dataset of 100.000 points with 9 features each the computational times are 14 seconds for the simple algorithm and 6 for the improved one, which is already a noticeable improvement.
 	
 	\section{Design}
+	An overview of the main packages of the library can be seen in figure \ref{fig:packages}. All relevant classes are grouped under the 'algorithms' package. The two versions of the algorithm which are implemented in the project are the basic K-Means and the Enhanced K-Means. The methods for seed initialization are grouped inside the $'seed\_selection'$ package.
+	
+	The utils package contains different distance computing functions such as manhattan and euclidean, serializing and deserializing models.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics{resources/Packages.png}
+		\caption{Main packages and modules}
+		\label{fig:packages}
+	\end{figure}
+
+	\subsection{Basic K-Means}
+	A pseudocode for the basic algorithm is given in figure \ref{alg:basic}. The algorithms iterates over two steps: mean assignment and mean update, which roughly correspond to the inner for loops.
+	
+	\begin{algorithm}[h]
+		select random seeds if not provided\;
+		\While{assignment\_change == true}
+		{
+			assignment\_change = false\;
+			\For{point p in dataset}
+			{
+				find nearest mean\;
+				map to nearest mean\;
+				\If{nearest mean != previous nearest mean}
+				{
+					assignment\_change = true\;
+				}
+			}
+		    \For{point p in dataset}
+		    {
+		    	update partial sum for each feature
+		    	of the mean assigned to p\;
+		    	update count of points for each mean\;
+		    }
+	    	compute new means from partial sums\;
+		}
+		\caption{Basic K-Means algorithm}
+		\label{alg:basic}
+	\end{algorithm}
+
+	\subsection{Enhanced K-Means}
+	
+	The Enhanced K-Means is very similar to the basic implementation. The main difference is the use of a new data structure that maintains the previous distance from each point to its assigned mean.
+	
+	\begin{algorithm}[h]
+		\For{point p in dataset}{
+			assigned\_mn = the mean assigned to p\;
+			dist\_to\_mean = distance(p, assigned\_mn)\;
+			\If{dist\_to\_mean \textgreater prev\_dist[p]}
+			{
+				compute distances to all other means\;
+				find the closest and update mapping if necessary\;
+			}
+		}
+		\caption{The updated mean assignment function}
+		\label{alg:enhanced}
+	\end{algorithm}
+
+	The updates in the basic algorithm can be observed in figure \ref{alg:enhanced}. The distance computation is skipped if the mean moved closer during the last update phase.
+	
+	\subsection{Sort and split}
+	
+	There are three main steps to this algorithm. The first is normalization and it consists of finding the minimum values for each feature, marking the features which need to be normalized (those that have a negative value for at least one of the points in the dataset) and the normalization (subtracting the minimum value from the marked features). The second and third steps are sorting the initial dataset by normalized distance to origin and partitioning the sorted set into k groups respectively. The seeds are chosen as the middle point from each of the discovered groups.
+	
+	\subsection{K-d trees}
+	The K-d tree algorithm is split into three modules which can be reused or replaced depending on the needs of the programmer. 
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics{resources/KdTree.png}
+		\caption{Overview of the Kd-tree seeding module}
+		\label{fig:kdtree}
+	\end{figure}
+	
+	The KdTree class encapsulates the algorithm used for building a general K-d tree taking as input a set of n-dimensional points and the maximum size of a leaf (by default, 1).
+	
+	A LeafBucket is initialized with the points that were assigned by the K-d tree algorithm to leaves and contains methods for computing statistics over them like volume and density.
+	
+	The CenterSelector encapsulates the strategy used to determine the initial seeds using the statistics and information provided by each leaf bucket. The default strategy is to select the mean of the bucket with the highest density first and then to pick by a weight which is the product of density and distance to other bucket means.
+	
+	
 	
 	\newpage
 	\bibliography{references_document}

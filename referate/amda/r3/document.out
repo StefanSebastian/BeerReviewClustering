@@ -6,3 +6,7 @@
 \BOOKMARK [3][-]{subsubsection.1.2.3}{Seed selection with K-d trees}{subsection.1.2}% 6
 \BOOKMARK [1][-]{section.2}{Analysis}{}% 7
 \BOOKMARK [1][-]{section.3}{Design}{}% 8
+\BOOKMARK [2][-]{subsection.3.1}{Basic K-Means}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.2}{Enhanced K-Means}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.3}{Sort and split}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.4}{K-d trees}{section.3}% 12

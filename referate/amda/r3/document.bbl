@@ -32,4 +32,8 @@ F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel,
   Machine learning in python,'' {\em Journal of Machine Learning Research},
   vol.~12, 2011.
 
+\bibitem{Matplotlib}
+J.~D. Hunter, ``Matplotlib: A 2d graphics environment,'' {\em Computing in
+  Science and Engineering}, vol.~9, pp.~90 -- 95, 2007.
+
 \end{thebibliography}

@@ -5,4 +5,8 @@
 \contentsline {subsubsection}{\numberline {1.2.2}Seed selection using the Sort and Split heuristic}{4}{subsubsection.1.2.2}
 \contentsline {subsubsection}{\numberline {1.2.3}Seed selection with K-d trees}{4}{subsubsection.1.2.3}
 \contentsline {section}{\numberline {2}Analysis}{4}{section.2}
-\contentsline {section}{\numberline {3}Design}{5}{section.3}
+\contentsline {section}{\numberline {3}Design}{6}{section.3}
+\contentsline {subsection}{\numberline {3.1}Basic K-Means}{6}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Enhanced K-Means}{7}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Sort and split}{7}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}K-d trees}{7}{subsection.3.4}
