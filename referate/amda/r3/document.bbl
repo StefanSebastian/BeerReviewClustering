@@ -1,0 +1,35 @@
+\begin{thebibliography}{1}
+
+\bibitem{HowMuchDataDoWeCreateEveryDay}
+``How much data do we create every day? the mind-blowing stats everyone should
+  read.''
+  \url{https://www.forbes.com/sites/bernardmarr/2018/05/21/how-much-data-do-we-create-every-day-the-mind-blowing-stats-everyone-should-read/#7f96d4a060ba}.
+\newblock Accessed: 2018-11-11.
+
+\bibitem{EfficientEnhancedKmeans}
+A.~Fahim, A.-B. M.Salem, F.~A.~Torkey, and M.~Ramadan, ``Efficient enhanced
+  k-means clustering algorithm,'' {\em Journal of Zhejiang University}, vol.~7,
+  no.~10, pp.~1626--1633, 2006.
+
+\bibitem{SortSeed}
+Y.~Madhu, S.~Rao~Pathakota, and S.~, ``Enhancing k-means clustering algorithm
+  with improved initial center,'' {\em International Journal of Computer
+  Science and Information Technologies}, vol.~1, pp.~121 -- 125, 01 2010.
+
+\bibitem{KdTree}
+J.~L. Bentley, ``Multidimensional binary search trees used for associative
+  searching,'' {\em Commun. ACM}, vol.~18, pp.~509--517, Sept. 1975.
+
+\bibitem{KdTreeKmeans}
+S.~J. Redmond and C.~Heneghan, ``A method for initialising the k-means
+  clustering algorithm using kd-trees,'' {\em Pattern Recognition Letters},
+  vol.~28, no.~8, pp.~965 -- 973, 2007.
+
+\bibitem{sk-learn}
+F.~Pedregosa, G.~Varoquaux, A.~Gramfort, V.~Michel, B.~Thirion, O.~Grisel,
+  M.~Blondel, P.~Prettenhofer, R.~Weiss, V.~Dubourg, J.~Vanderplas, A.~Passos,
+  D.~Cournapeau, M.~Brucher, M.~Perrot, and Édouard Duchesnay, ``Scikit-learn:
+  Machine learning in python,'' {\em Journal of Machine Learning Research},
+  vol.~12, 2011.
+
+\end{thebibliography}
